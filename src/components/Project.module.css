@@ -1,0 +1,51 @@
+@import '../layouts/root.css';
+
+.project {
+  position: relative;
+  composes: container from '../layouts/container.css';
+}
+
+.videoContainer {
+  grid-column: full;
+  height: 300vh;
+}
+
+.video {
+  position: sticky;
+  width: 100%;
+  top: 0;
+  bottom: auto;
+}
+
+.projectInfos {
+  position: absolute;
+  grid-column: full;
+  composes: container from '../layouts/container.css';
+  height: 100%;
+  width: 100%;
+  background-color: rgba(0, 0, 0, 0.9);
+  will-change: opacity;
+}
+
+.projectInfosInner {
+  grid-column: main;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 100vh;
+}
+
+.title {
+  font-size: 4.5rem;
+}
+
+.description {
+  font-size: 3rem;
+  color: var(--yellow);
+  margin-bottom: 2rem;
+}
+
+.content {
+  font-size: 1.5rem;
+  font-weight: 300;
+}

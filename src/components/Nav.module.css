@@ -1,0 +1,16 @@
+@import '../layouts/root.css';
+
+.nav {
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  font-size: 1.5rem;
+}
+
+.link {
+  color: white;
+  text-decoration: none;
+}
+
+.active {
+  @apply --underlined;
+}

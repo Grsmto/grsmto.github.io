@@ -1,0 +1,8 @@
+.container {
+  display: grid;
+  grid-template-columns: [full-start] minmax(1.5rem, 1fr) [main-start] minmax(0, 71.25rem) [main-end] minmax(1.5rem, 1fr) [full-end];
+}
+
+.container-inner {
+  grid-column: main;
+}
