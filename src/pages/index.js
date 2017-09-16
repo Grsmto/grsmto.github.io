@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import Link from 'gatsby-link';
 import { TrackDocument, TrackedDiv } from 'react-track';
-import { calculateScrollY, topTop, topBottom } from 'react-track/tracking-formulas';
+import { getDocumentElement, calculateScrollY, topTop, topBottom } from 'react-track/tracking-formulas';
 
 import styles from './index.module.css';
 
@@ -32,8 +32,8 @@ class IndexPage extends Component {
     const { isLogoVisible } = this.state;
 
     return (
-      <TrackDocument formulas={[calculateScrollY, topTop, topBottom]}>
-        {(documentScrollY, topTop, topBottom) =>
+      <TrackDocument formulas={[getDocumentElement, calculateScrollY, topTop, topBottom]}>
+        {(documentElement, documentScrollY, topTop, topBottom) =>
           <div className="page">
             {data.allMarkdownRemark.edges.map(({ node }) =>
               <TrackedDiv formulas={[topTop, topBottom, calculateScrollY]} key={node.frontmatter.title}>
@@ -42,10 +42,10 @@ class IndexPage extends Component {
                     title={node.frontmatter.title}
                     description={node.frontmatter.description}
                     html={node.html}
-                    documentScrollY={documentScrollY}
                     scrollY={scrollY}
                     posTop={posTopTop}
                     posTopBottom={posTopBottom}
+                    isOnScreen={documentElement.clientHeight >= -scrollY}
                   />
                 }
               </TrackedDiv>

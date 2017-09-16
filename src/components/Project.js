@@ -18,6 +18,13 @@ export default class Project extends Component {
 
   }
 
+  shouldComponentUpdate(nextProps) {
+    if (nextProps.isOnScreen && this.props.scrollY !== nextProps.scrollY) {
+      return true;
+    }
+    return false;
+  }
+
   render() {
     const { title, description, html, documentScrollY, scrollY, posTop, posTopBottom } = this.props;
 
