@@ -1,6 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
-import Link from 'gatsby-link'
+import Link from 'gatsby-link';
 
 import styles from './Header.module.css';
 
@@ -13,6 +13,6 @@ const Header = () =>
       <Logo className={styles.logo} short />
     </div>
     <Nav />
-  </header>
+  </header>;
 
 export default Header;

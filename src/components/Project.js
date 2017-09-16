@@ -1,38 +1,28 @@
-import React, { Component } from 'react'
-import classnames from 'classnames'
-import Link from 'gatsby-link'
-import { Motion, spring, presets } from 'react-motion'
+import React, { Component } from 'react';
+import { Motion, spring, presets } from 'react-motion';
 
-import styles from './Project.module.css'
-import videoFeastIt from '../assets/videos/feast-it.mp4'
+import styles from './Project.module.css';
+import videoFeastIt from '../assets/videos/feast-it.mp4';
 
 export default class Project extends Component {
   constructor(props) {
-    super(props)
-    this.state = {}
-    this.projectEl = null
+    super(props);
+    this.state = {};
+    this.projectEl = null;
   }
 
   componentDidMount() {}
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.isOnScreen && this.props.scrollY !== nextProps.scrollY) {
-      return true
+      return true;
     }
-    return false
+    return false;
   }
 
   render() {
-    const {
-      title,
-      description,
-      html,
-      posBottomBottom,
-      scrollY,
-      posTop,
-      posTopBottom,
-    } = this.props
-    const elHeight = this.projectEl ? this.projectEl.offsetHeight : 1
+    const { title, description, html, scrollY } = this.props;
+    const elHeight = this.projectEl ? this.projectEl.offsetHeight : 1;
 
     return (
       <section className={styles.project}>
@@ -56,7 +46,7 @@ export default class Project extends Component {
               presets.stiff
             ),
             y: spring(Math.max(-scrollY / 2, -120)),
-            y2: spring(Math.max(-scrollY / 1.5, -200)),
+            y2: spring(Math.max(-scrollY / 1.5, -200))
           }}
         >
           {currentStyles =>
@@ -76,7 +66,7 @@ export default class Project extends Component {
                   className={styles.description}
                   style={{
                     opacity: currentStyles.opacityDescription,
-                    transform: `translateY(${currentStyles.y}px)`,
+                    transform: `translateY(${currentStyles.y}px)`
                   }}
                 >
                   {description}
@@ -85,7 +75,7 @@ export default class Project extends Component {
                   className={styles.content}
                   style={{
                     opacity: currentStyles.opacityContent,
-                    transform: `translateY(${currentStyles.y2}px)`,
+                    transform: `translateY(${currentStyles.y2}px)`
                   }}
                   dangerouslySetInnerHTML={{ __html: html }}
                 />
@@ -93,6 +83,6 @@ export default class Project extends Component {
             </div>}
         </Motion>
       </section>
-    )
+    );
   }
 }

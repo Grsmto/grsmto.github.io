@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import Link from 'gatsby-link';
 import { TrackDocument, TrackedDiv } from 'react-track';
-import { getDocumentElement, calculateScrollY, topTop, topBottom } from 'react-track/tracking-formulas';
+import {
+  getDocumentElement,
+  calculateScrollY,
+  topTop,
+  topBottom
+} from 'react-track/tracking-formulas';
 
 import styles from './index.module.css';
 
@@ -9,21 +13,22 @@ import Logo from '../components/Logo';
 import Project from '../components/Project';
 
 class IndexPage extends Component {
-
   constructor(props) {
     super(props);
     this.state = {
       isLogoVisible: false
-    }
+    };
   }
 
   componentDidMount() {
     if (window) {
-      window.setTimeout(() =>
-        this.setState({
-          isLogoVisible: true
-        })
-      , 100);
+      window.setTimeout(
+        () =>
+          this.setState({
+            isLogoVisible: true
+          }),
+        100
+      );
     }
   }
 
@@ -32,11 +37,16 @@ class IndexPage extends Component {
     const { isLogoVisible } = this.state;
 
     return (
-      <TrackDocument formulas={[getDocumentElement, calculateScrollY, topTop, topBottom]}>
+      <TrackDocument
+        formulas={[getDocumentElement, calculateScrollY, topTop, topBottom]}
+      >
         {(documentElement, documentScrollY, topTop, topBottom) =>
           <div className="page">
             {data.allMarkdownRemark.edges.map(({ node }) =>
-              <TrackedDiv formulas={[topTop, topBottom, calculateScrollY]} key={node.frontmatter.title}>
+              <TrackedDiv
+                formulas={[topTop, topBottom, calculateScrollY]}
+                key={node.frontmatter.title}
+              >
                 {(posTopTop, posTopBottom, scrollY) =>
                   <Project
                     title={node.frontmatter.title}
@@ -46,14 +56,12 @@ class IndexPage extends Component {
                     posTop={posTopTop}
                     posTopBottom={posTopBottom}
                     isOnScreen={documentElement.clientHeight >= -scrollY}
-                  />
-                }
+                  />}
               </TrackedDiv>
             )}
-          </div>
-        }
+          </div>}
       </TrackDocument>
-    )
+    );
   }
 }
 
@@ -73,4 +81,4 @@ export const query = graphql`
       }
     }
   }
-`
+`;
