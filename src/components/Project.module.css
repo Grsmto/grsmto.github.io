@@ -23,29 +23,46 @@
   composes: container from '../layouts/container.css';
   height: 100%;
   width: 100%;
+}
+
+.background {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  top: 0;
+  left: 0;
   background-color: rgba(0, 0, 0, 0.9);
   will-change: opacity;
 }
 
 .projectInfosInner {
+  position: relative;
   grid-column: main;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   height: 100vh;
+  z-index: 1;
 }
 
 .title {
+  position: absolute;
+  bottom: 20vh;
   font-size: 4.5rem;
 }
 
 .description {
+  position: absolute;
+  top: 100vh;
   font-size: 3rem;
   color: var(--yellow);
   margin-bottom: 2rem;
+  will-change: opacity, transform;
 }
 
 .content {
+  position: absolute;
+  top: calc(100vh + 12rem);
   font-size: 1.5rem;
   font-weight: 300;
+  will-change: opacity, transform;
 }

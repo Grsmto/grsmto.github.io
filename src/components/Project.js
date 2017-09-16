@@ -1,60 +1,96 @@
-import React, { Component } from 'react';
-import classnames from 'classnames';
-import Link from 'gatsby-link';
-import { Motion, spring, presets } from 'react-motion';
+import React, { Component } from 'react'
+import classnames from 'classnames'
+import Link from 'gatsby-link'
+import { Motion, spring, presets } from 'react-motion'
 
-import styles from './Project.module.css';
-import videoFeastIt from '../assets/videos/feast-it.mp4';
+import styles from './Project.module.css'
+import videoFeastIt from '../assets/videos/feast-it.mp4'
 
 export default class Project extends Component {
-
   constructor(props) {
-    super(props);
-    this.state = {};
-    this.projectEl = null;
+    super(props)
+    this.state = {}
+    this.projectEl = null
   }
 
-  componentDidMount() {
-
-  }
+  componentDidMount() {}
 
   shouldComponentUpdate(nextProps) {
     if (nextProps.isOnScreen && this.props.scrollY !== nextProps.scrollY) {
-      return true;
+      return true
     }
-    return false;
+    return false
   }
 
   render() {
-    const { title, description, html, documentScrollY, scrollY, posTop, posTopBottom } = this.props;
+    const {
+      title,
+      description,
+      html,
+      posBottomBottom,
+      scrollY,
+      posTop,
+      posTopBottom,
+    } = this.props
+    const elHeight = this.projectEl ? this.projectEl.offsetHeight : 1
 
     return (
       <section className={styles.project}>
         <div className={styles.videoContainer}>
-          <video className={styles.video} autoPlay={scrollY > posTopBottom}>
-            <source
-              src={videoFeastIt}
-              type="video/mp4" />
+          <video className={styles.video}>
+            <source src={videoFeastIt} type="video/mp4" />
           </video>
         </div>
         <Motion
           style={{
-            opacity: this.projectEl ? spring(1 - scrollY / (this.projectEl.offsetHeight / 2), presets.noWobble) : 1
+            opacityBg: spring(
+              Math.max(1 - (scrollY - 300) / (elHeight / 2.5)),
+              presets.stiff
+            ),
+            opacityDescription: spring(
+              (scrollY - 30) / (elHeight / 15),
+              presets.stiff
+            ),
+            opacityContent: spring(
+              (scrollY - 150) / (elHeight / 15),
+              presets.stiff
+            ),
+            y: spring(Math.max(-scrollY / 2, -120)),
+            y2: spring(Math.max(-scrollY / 1.5, -200)),
           }}
         >
           {currentStyles =>
             <div
-              ref={r => this.projectEl = r}
+              ref={r => (this.projectEl = r)}
               className={styles.projectInfos}
-              style={{ opacity: currentStyles.opacity }}
             >
+              <div
+                className={styles.background}
+                style={{ opacity: currentStyles.opacityBg }}
+              />
               <div className={styles.projectInfosInner}>
-                <h1 className={styles.title}>{title}</h1>
-                <h2 className={styles.description}>{description}</h2>
-                <div className={styles.content} dangerouslySetInnerHTML={{ __html: html }} />
+                <h1 className={styles.title}>
+                  {title}
+                </h1>
+                <h2
+                  className={styles.description}
+                  style={{
+                    opacity: currentStyles.opacityDescription,
+                    transform: `translateY(${currentStyles.y}px)`,
+                  }}
+                >
+                  {description}
+                </h2>
+                <div
+                  className={styles.content}
+                  style={{
+                    opacity: currentStyles.opacityContent,
+                    transform: `translateY(${currentStyles.y2}px)`,
+                  }}
+                  dangerouslySetInnerHTML={{ __html: html }}
+                />
               </div>
-            </div>
-          }
+            </div>}
         </Motion>
       </section>
     )
