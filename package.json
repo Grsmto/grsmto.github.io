@@ -6,11 +6,11 @@
   "dependencies": {
     "basscss": "^8.0.2",
     "classnames": "^2.2.5",
-    "gatsby": "^1.6.5",
+    "gatsby": "^1.9.36",
     "gatsby-link": "^1.6.5",
     "gatsby-plugin-react-helmet": "^1.0.1",
     "gatsby-source-filesystem": "^1.4.8",
-    "gatsby-transformer-remark": "^1.7.5",
+    "gatsby-transformer-remark": "^1.7.7",
     "normalize.css": "^7.0.0",
     "react-motion": "^0.5.1",
     "react-track": "^0.4.4",
@@ -30,7 +30,6 @@
   "devDependencies": {
     "babel-eslint": "^8.0.0",
     "eslint": "^4.4.1",
-    "eslint-config-airbnb": "^15.1.0",
     "eslint-config-prettier": "^2.3.0",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^6.0.2",
