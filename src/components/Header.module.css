@@ -8,7 +8,14 @@
   grid-template-columns: 1fr 1fr;
   margin-top: 1.5rem;
   z-index: 1;
+  opacity: 0;
+  visibility: hidden;
   /*mix-blend-mode: lighten;*/
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
 }
 
 .logo {

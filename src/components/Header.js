@@ -1,18 +1,24 @@
 import React from 'react';
 import classnames from 'classnames';
-import Link from 'gatsby-link';
+import { connect } from 'react-redux';
 
 import styles from './Header.module.css';
 
 import Nav from './Nav';
 import Logo from './Logo';
 
-const Header = () =>
-  <header className={`${styles.header} container`}>
+const Header = ({ isIntroDone }) =>
+  <header className={classnames(`${styles.header} container`, {
+    [styles.visible]: isIntroDone
+  })}>
     <div>
       <Logo className={styles.logo} short />
     </div>
     <Nav />
   </header>;
 
-export default Header;
+const mapStateToProps = ({ isIntroDone }) => {
+  return { isIntroDone };
+}
+
+export default connect(mapStateToProps)(Header);
