@@ -4,11 +4,9 @@ import classnames from 'classnames';
 import styles from './Logo.module.css';
 import logoIcon from '../assets/images/logo.svg';
 
-const Logo = ({ className, short = false, visible = false }) =>
+const Logo = ({ className, short = false }) =>
   <div
-    className={classnames(className, styles.logo, {
-      [styles.visible]: visible
-    })}
+    className={classnames(className, styles.logo)}
   >
     <svg
       xmlns="http://www.w3.org/2000/svg"

@@ -21,5 +21,8 @@
     box-shadow: inset -2px -1px 0 #000, inset 0 -2px 0 #fff, inset 0 -3px 0 #000, inset 0 -4px 0 #fff;
   };
 
+  --ease-in-out-expo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+  --ease-in-out-quint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+
   @custom-media --max-width (width <= 1140px);
 }

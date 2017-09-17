@@ -10,54 +10,32 @@
     position: relative;
     font-size: 4rem;
     letter-spacing: 1.5px;
-    filter: url(#filter-glitch-1);
+    /*filter: url(#filter-glitch-1);*/
 
-    & .name, 
+    & .name,
     & .surname {
         display: inline-block;
-        transition: all 300ms;
         color: var(--red);
-        /*opacity: 0;
-        visibility: hidden;*/
     }
 
     & .name {
-        /*transform: translateX(100px);*/
+      animation: appearLeft 4s 1s var(--ease-in-out-quint) both;
     }
 
     & .surname {
-        /*transform: translateX(-100px);*/
+        animation: appearRight 4s 1.1s var(--ease-in-out-quint) both;
     }
 
     & .subtitle {
-        transition: all 300ms 300ms ;
-        /*opacity: 0;
-        visibility: hidden;*/
         text-shadow: -3px 4px 0px black, 3px 4px 0px black;
         box-shadow: inset 0px -2px 0 #000, inset 0 -5px 0 #fff, inset 0 -8px 0 #000, inset 0 -11px 0 #fff;
+        animation: fadeIn 300ms 3.1s both;
     }
 }
 
-/*.visible {
-    & .name {
-        transform: translateX(0);
-    }
-
-    & .surname {
-        transform: translateX(0);
-    }
-
-    & .subtitle,
-    & .name,
-    & .surname {
-        opacity: 1;
-        visibility: visible;
-    }
-}*/
-
 .small {
     font-size: 1.5rem;
-    
+
     & .name {
         box-shadow: inset -2px -1px 0 #000, inset 0px -2px 0 #FFF, inset 0px -3px 0 #000, inset 0px -4px 0 #FFF;
     }
@@ -65,4 +43,23 @@
     & .subtitle {
         color: var(--red);
     }
+}
+
+@keyframes appearLeft {
+  0% { transform: translate3d(90px, 60px, 0) rotateZ(10deg); opacity: 0; }
+  33% { transform: translate3d(90px, 0, 0); opacity: 1; }
+  38% { transform: translate3d(90px, 0, 0); opacity: 1; }
+  64% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes appearRight {
+  0% { transform: translate3d(-90px, 60px, 0) rotateZ(10deg); opacity: 0; }
+  33% { transform: translate3d(-90px, 0, 0); opacity: 1; }
+  38% { transform: translate3d(-90px, 0, 0); opacity: 1; }
+  64% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
 }
