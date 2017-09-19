@@ -31,7 +31,9 @@ module.exports = {
       }
     }
   },
-  globals: ['graphql'],
+  globals: {
+    'graphql': true
+  },
   rules: {
     'arrow-parens': [0],
     'class-methods-use-this': [0],
