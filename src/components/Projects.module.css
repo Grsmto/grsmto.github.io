@@ -1,0 +1,11 @@
+@import '../layouts/root.css';
+
+.projects {
+  visibility: hidden;
+  opacity: 0;
+
+  &.visible {
+    visibility: visible;
+    opacity: 1;
+  }
+}
