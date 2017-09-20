@@ -1,0 +1,24 @@
+@keyframes scaleDown {
+  0% { transform: scale(1); opacity: 1; }
+  90% { transform: scale(0.6); opacity: 0; }
+  100% { transform: scale(0.7); opacity: 0; }
+}
+
+@keyframes appearLeft {
+  0% { transform: translate3d(90px, 60px, 0) rotateZ(10deg); opacity: 0; }
+  33% { transform: translate3d(90px, 0, 0); opacity: 1; }
+  38% { transform: translate3d(90px, 0, 0); opacity: 1; }
+  54% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes appearRight {
+  0% { transform: translate3d(-90px, 60px, 0) rotateZ(10deg); opacity: 0; }
+  33% { transform: translate3d(-90px, 0, 0); opacity: 1; }
+  38% { transform: translate3d(-90px, 0, 0); opacity: 1; }
+  54% { transform: translate3d(0, 0, 0); }
+}
+
+@keyframes fadeIn {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
