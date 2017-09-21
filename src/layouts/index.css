@@ -15,6 +15,12 @@ html {
   box-sizing: inherit;
 }
 
+::selection {
+  background-color: rgba(255, 241, 124, 0.99);
+  color: black;
+  opacity: 1;
+}
+
 body {
   font-family: Roboto, var(--font-family-sans-serif);
   background-color: black;
