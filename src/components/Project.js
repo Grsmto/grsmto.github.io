@@ -4,6 +4,8 @@ import { Motion, spring, presets } from 'react-motion';
 import styles from './Project.module.css';
 import videoFeastIt from '../assets/videos/feast-it.mp4';
 
+const opacity = (x) => Math.max(0, Math.min(1, x));
+
 export default class Project extends Component {
   constructor(props) {
     super(props);
@@ -34,15 +36,15 @@ export default class Project extends Component {
         <Motion
           style={{
             opacityBg: spring(
-              Math.max(1 - (scrollY - 300) / (elHeight / 2.5)),
+              opacity(1 - (scrollY - 300) / (elHeight / 2.5)),
               presets.stiff
             ),
             opacityDescription: spring(
-              (scrollY - 30) / (elHeight / 15),
+              opacity((scrollY - 30) / (elHeight / 15)),
               presets.stiff
             ),
             opacityContent: spring(
-              (scrollY - 150) / (elHeight / 15),
+              opacity((scrollY - 150) / (elHeight / 15)),
               presets.stiff
             ),
             y: spring(Math.max(-scrollY / 2, -120)),
