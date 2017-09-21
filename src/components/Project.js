@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import classnames from 'classnames';
 import { Motion, spring, presets } from 'react-motion';
 
 import styles from './Project.module.css';
@@ -13,17 +14,15 @@ export default class Project extends Component {
     this.projectEl = null;
   }
 
-  componentDidMount() {}
-
   shouldComponentUpdate(nextProps) {
-    if (nextProps.isOnScreen && this.props.scrollY !== nextProps.scrollY) {
+    if (nextProps.isOnScreen) {
       return true;
     }
     return false;
   }
 
   render() {
-    const { title, description, html, scrollY } = this.props;
+    const { title, description, html, scrollY, isOnScreen } = this.props;
     const elHeight = this.projectEl ? this.projectEl.offsetHeight : 1;
 
     return (
@@ -61,7 +60,9 @@ export default class Project extends Component {
                 style={{ opacity: currentStyles.opacityBg }}
               />
               <div className={styles.projectInfosInner}>
-                <h1 className={styles.title}>
+                <h1 className={classnames(styles.title, {
+                  [styles.titleAppear]: isOnScreen
+                })}>
                   {title}
                 </h1>
                 <h2

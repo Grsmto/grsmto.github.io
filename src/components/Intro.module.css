@@ -1,3 +1,5 @@
+@import '../layouts/root.css';
+
 .logo {
   position: absolute;
   top: 0;
@@ -7,4 +9,5 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  z-index: var(--z-index-intro);
 }

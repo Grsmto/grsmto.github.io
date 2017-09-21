@@ -4,7 +4,6 @@ import classnames from 'classnames';
 import { TrackDocument } from 'react-track';
 import {
   getDocumentElement,
-  calculateScrollY,
   topTop,
   topBottom
 } from 'react-track/tracking-formulas';
@@ -24,17 +23,18 @@ class IndexPage extends Component {
 
   render() {
     const { data, isIntroDone } = this.props;
+    const hideScrollStyle = {
+      maxHeight: '100vh',
+      overflow: 'hidden'
+    }
 
     return (
       <TrackDocument
         formulas={[getDocumentElement, topTop, topBottom]}
       >
         {(documentElement, topTop, topBottom) =>
-          <div className="page">
-            <Intro
-              className={classnames({ visible: !isIntroDone })}
-              onEnd={this.onIntroEnd.bind(this)}
-            />
+          <div className="page" style={!isIntroDone ? hideScrollStyle : null}>
+            {!isIntroDone && <Intro onEnd={this.onIntroEnd.bind(this)} />}
             <Projects
               data={data.allMarkdownRemark.edges}
               documentElement={documentElement}

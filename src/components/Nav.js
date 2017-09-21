@@ -1,5 +1,4 @@
 import React from 'react';
-import classnames from 'classnames';
 import Link from 'gatsby-link';
 
 import styles from './Nav.module.css';

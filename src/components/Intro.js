@@ -1,5 +1,4 @@
 import React, { Component } from 'react';
-import classnames from 'classnames';
 
 import styles from './Intro.module.css';
 import Logo from './Logo';
@@ -7,11 +6,14 @@ import Logo from './Logo';
 export default class Intro extends Component {
 
   render() {
-    const { onEnd } = this.props;
+    const { className, onEnd } = this.props;
 
     return (
-      <div className="">
-        <Logo className={styles.logo} />
+      <div className={className}>
+        <Logo
+          className={styles.logo}
+          onAnimEnd={() => onEnd()}
+        />
       </div>
     )
   }

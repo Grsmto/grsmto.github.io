@@ -1,28 +1,31 @@
 @import '../layouts/root.css';
+@import '../layouts/animations.module.css';
 
 .project {
   position: relative;
   composes: container from '../layouts/container.css';
-}
-
-.videoContainer {
-  grid-column: full;
   height: 300vh;
 }
 
-.video {
+.videoContainer {
   position: sticky;
-  width: 100%;
+  grid-column: full;
   top: 0;
   bottom: auto;
+  height: 100vh;
+}
+
+.video {
+  width: 100%;
+  display: block;
 }
 
 .projectInfos {
   position: absolute;
   grid-column: full;
   composes: container from '../layouts/container.css';
-  height: 100%;
   width: 100%;
+  height: 100%;
 }
 
 .background {
@@ -48,6 +51,10 @@
   position: absolute;
   bottom: 20vh;
   font-size: 4.5rem;
+
+  &.titleAppear {
+    animation: appear 1s 300ms var(--ease-in-out-quint) both;
+  }
 }
 
 .description {
