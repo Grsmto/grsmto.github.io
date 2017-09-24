@@ -1,4 +1,5 @@
 @import '../layouts/root.css';
+@import '../layouts/animations.module.css';
 
 .logo {
   position: absolute;
@@ -10,4 +11,37 @@
   justify-content: center;
   align-items: center;
   z-index: var(--z-index-intro);
+  composes: logo from "./Logo.module.css";
+
+  &.hidden {
+    transition: all 0.5s;
+    visibility: hidden;
+  }
+}
+
+.logoInner {
+  position: relative;
+  font-size: 4rem;
+  letter-spacing: 1.5px;
+  animation: disappearRight 0.5s 4s var(--ease-in-out-quint) forwards;
+}
+
+.name,
+.surname {
+  display: inline-block;
+  color: var(--red);
+}
+
+.name {
+  animation: appearLeft 4s 1s var(--ease-in-out-quint) both;
+}
+
+.surname {
+  animation: appearRight 4s 1.1s var(--ease-in-out-quint) both;
+}
+
+.subtitle {
+  text-shadow: -3px 4px 0px black, 3px 4px 0px black;
+  box-shadow: inset 0px -2px 0 #000, inset 0 -5px 0 #fff, inset 0 -8px 0 #000, inset 0 -11px 0 #fff;
+  animation: fadeIn 300ms 2.9s both;
 }

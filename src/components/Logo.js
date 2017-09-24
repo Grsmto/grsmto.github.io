@@ -5,7 +5,7 @@ import styles from './Logo.module.css';
 
 export default class Logo extends Component {
   render() {
-    const { className, short = false, onAnimEnd } = this.props;
+    const { className } = this.props;
 
     return (
       <div
@@ -34,24 +34,10 @@ export default class Logo extends Component {
             </filter>
           </defs>
         </svg>
-        {short
-          ? <span className={styles.small}>
-              <span className={styles.name}>ad.</span>
-              <span className={styles.subtitle}>dvlpr</span>
-            </span>
-          : <span
-              className={classnames(styles.logoInner, styles.big)}
-              onAnimationEnd={e => {
-                if(e.target === this.logo) {
-                  onAnimEnd();
-                }
-              }}
-              ref={r => { this.logo = r; }}
-            >
-              <span className={styles.name}>adrien</span>{' '}
-              <span className={styles.subtitle}>dvlpr</span>{' '}
-              <span className={styles.surname}>denat</span>
-            </span>}
+        <span>
+          <span className={styles.name}>ad.</span>
+          <span className={styles.subtitle}>dvlpr</span>
+        </span>
       </div>
     );
   }

@@ -1,12 +1,10 @@
 @import '../layouts/root.css';
 
 .projects {
-  visibility: hidden;
   opacity: 0;
-  transition: all 300ms 300ms;
+  transition: all 300ms 600ms;
 
   &.visible {
-    visibility: visible;
     opacity: 1;
   }
 }

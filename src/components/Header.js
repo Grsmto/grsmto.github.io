@@ -12,7 +12,7 @@ const Header = ({ isIntroDone }) =>
     [styles.visible]: isIntroDone
   })}>
     <div>
-      <Logo className={styles.logo} short />
+      {isIntroDone && <Logo className={styles.logo} />}
     </div>
     <Nav />
   </header>;

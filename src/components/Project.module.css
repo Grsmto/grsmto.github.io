@@ -53,7 +53,7 @@
   font-size: 4.5rem;
 
   &.titleAppear {
-    animation: appear 1s 300ms var(--ease-in-out-quint) both;
+    animation: appear 1s 600ms var(--ease-in-out-quint) both;
   }
 }
 

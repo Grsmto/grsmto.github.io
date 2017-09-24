@@ -32,3 +32,8 @@
   0% { opacity: 0; }
   100% { opacity: 1; }
 }
+
+@keyframes disappearRight {
+  90% { opacity: 0;  }
+  100% { transform: translate3d(0, -60px, 0) rotateZ(-5deg); opacity: 0; }
+}

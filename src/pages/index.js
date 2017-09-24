@@ -34,7 +34,9 @@ class IndexPage extends Component {
       >
         {(documentElement, topTop, topBottom) =>
           <div className="page" style={!isIntroDone ? hideScrollStyle : null}>
-            {!isIntroDone && <Intro onEnd={this.onIntroEnd.bind(this)} />}
+            <Intro
+              onEnd={this.onIntroEnd.bind(this)}
+            />
             <Projects
               data={data.allMarkdownRemark.edges}
               documentElement={documentElement}
