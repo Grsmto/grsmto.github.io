@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import classnames from 'classnames';
 import { TrackDocument } from 'react-track';
 import {
   getDocumentElement,
@@ -36,6 +35,7 @@ class IndexPage extends Component {
           <div className="page" style={!isIntroDone ? hideScrollStyle : null}>
             <Intro
               onEnd={this.onIntroEnd.bind(this)}
+              isVisible={!isIntroDone}
             />
             <Projects
               data={data.allMarkdownRemark.edges}

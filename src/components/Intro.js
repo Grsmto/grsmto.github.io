@@ -5,25 +5,16 @@ import styles from './Intro.module.css';
 
 export default class Intro extends Component {
 
-  constructor(props) {
-    super(props);
-
-    this.state = {
-      isHidden: false
-    };
-  }
-
   render() {
-    const { className, onEnd } = this.props;
+    const { className, onEnd, isVisible } = this.props;
 
     return (
-      <div className={classnames(className, styles.logo, { [styles.hidden]: this.state.isHidden })}>
+      <div className={classnames(className, styles.logo, { [styles.hidden]: !isVisible })}>
         <span
           className={classnames(styles.logoInner)}
           onAnimationStart={e => {
             if(e.target === this.logo) {
               onEnd();
-              this.setState({ isHidden: true });
             }
           }}
           ref={r => { this.logo = r; }}
