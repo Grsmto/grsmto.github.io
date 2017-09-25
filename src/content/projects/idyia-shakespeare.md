@@ -1,6 +1,8 @@
 ---
 title: "Idyia Shakespeare"
-description: "Building Airbnb for food trucks."
+description: "Helping generation X to discover Shakespeare."
 ---
 
-Bored of hunting down and comparing individual food trucks online, they pictured a sexy, intuitive e-commerce platform that would connect food truck suppliers directly to clients, B2B and B2C.
+Interactive content, quizzes, instant glossary definitions are some of the features we built to help students accelerate their learning using the Idyia platform. Teachers keep track of students progress through the plays in the admin by viewing their quiz scores, notes and engagement.
+
+During 3 months of Agile workflow, I built the application frontend working closely with the UI designer and backend developer. I took responsibility of the architecture, user permissions management, API communications and UI interactions.
