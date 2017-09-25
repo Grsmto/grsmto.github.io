@@ -63,7 +63,7 @@ export default class Project extends Component {
                 <h1 className={classnames(styles.title, {
                   [styles.titleAppear]: isOnScreen
                 })}>
-                  {title}
+                  <span>{title}</span>
                 </h1>
                 <h2
                   className={styles.description}

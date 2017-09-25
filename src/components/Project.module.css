@@ -48,28 +48,35 @@
 }
 
 .title {
-  position: absolute;
-  bottom: 20vh;
+  margin-top: 60vh;
   font-size: 4.5rem;
 
-  &.titleAppear {
+  &.titleAppear :global(span) {
+    display: inline-block;
     animation: appear 1s 600ms var(--ease-in-out-quint) both;
+  }
+
+  @media (width <= 600px) {
+    font-size: 2.6rem;
   }
 }
 
 .description {
-  position: absolute;
-  top: 100vh;
+  display: inline-block;
   font-size: 3rem;
   color: var(--yellow);
+  margin-top: 10rem;
   margin-bottom: 2rem;
   will-change: opacity, transform;
+
+  @media (width <= 600px) {
+    font-size: 2rem;
+  }
 }
 
 .content {
-  position: absolute;
-  top: calc(100vh + 12rem);
   font-size: 1.5rem;
+  margin-top: 6rem;
   font-weight: 300;
   will-change: opacity, transform;
 }

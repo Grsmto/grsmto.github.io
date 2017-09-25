@@ -4,6 +4,10 @@
   font-weight: 500;
   letter-spacing: 0.5px;
   font-size: 1.5rem;
+
+  @media (--mobile) {
+    font-size: 1.1rem;
+  }
 }
 
 .link {
@@ -12,5 +16,9 @@
 }
 
 .active {
-  @apply --underlined;
+  @apply --underlined-double;
+
+  @media (--mobile) {
+    @apply --underlined;
+  }
 }

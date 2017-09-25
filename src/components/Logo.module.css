@@ -5,6 +5,10 @@
   letter-spacing: 0.5px;
   text-align: center;
   font-size: 1.5rem;
+
+  @media (--mobile) {
+    font-size: 1.1rem;
+  }
 }
 
 .name,
@@ -13,8 +17,12 @@
 }
 
 .name {
-  box-shadow: inset -2px -1px 0 #000, inset 0px -2px 0 #FFF, inset 0px -3px 0 #000, inset 0px -4px 0 #FFF;
   animation: appear 1s var(--ease-in-out-quint);
+  @apply --underlined-double;
+
+  @media (--mobile) {
+    @apply --underlined;
+  }
 }
 
 .subtitle {

@@ -6,7 +6,7 @@ import styles from './Nav.module.css';
 const Nav = () =>
   <nav className={styles.nav}>
     <ul className="list-reset m0 right-align">
-      <li className="inline-block ml3">
+      <li className="inline-block">
         <Link
           className={styles.link}
           activeClassName={styles.active}
