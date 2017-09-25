@@ -6,8 +6,8 @@
   "dependencies": {
     "basscss": "^8.0.2",
     "classnames": "^2.2.5",
-    "gatsby": "^1.9.36",
-    "gatsby-link": "^1.6.5",
+    "gatsby": "^1.9.43",
+    "gatsby-link": "^1.6.16",
     "gatsby-plugin-react-helmet": "^1.0.1",
     "gatsby-source-filesystem": "^1.4.8",
     "gatsby-transformer-remark": "^1.7.7",
