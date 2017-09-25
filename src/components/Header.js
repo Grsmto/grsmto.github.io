@@ -1,5 +1,6 @@
 import React from 'react';
 import classnames from 'classnames';
+import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import styles from './Header.module.css';
@@ -21,4 +22,4 @@ const mapStateToProps = ({ isIntroDone }) => {
   return { isIntroDone };
 }
 
-export default connect(mapStateToProps)(Header);
+export default withRouter(connect(mapStateToProps)(Header));
