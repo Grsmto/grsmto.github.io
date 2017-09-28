@@ -1,7 +1,8 @@
 @import 'normalize.css';
 @import 'basscss';
 
-@import './root.css';
+@import './variables.css';
+@import './container.css';
 
 html {
   box-sizing: border-box;
@@ -26,7 +27,16 @@ body {
   background-color: black;
   color: white;
   overflow-y: scroll;
-  height: 100vh;
+  min-height: 100vh;
+  font-size: 1.5rem;
+
+  @media (width <= 1024px) {
+    font-size: 1.2rem;
+  }
+
+  @media (--mobile) {
+    font-size: 0.875rem;
+  }
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -46,7 +56,39 @@ h1 {
 p {
   margin-top: 0;
   margin-bottom: 1rem;
-  line-height: 1.2;
+  font-weight: 300;
+  line-height: 1.7em;
+}
+
+a {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.title {
+  font-size: 4rem;
+
+  @media (width <= 1024px) {
+    font-size: 3.2rem;
+  }
+
+  @media (--mobile) {
+    font-size: 2.6rem;
+  }
+}
+
+.subtitle {
+  font-size: 3rem;
+  color: var(--yellow);
+
+  @media (width <= 1024px) {
+    font-size: 2.1rem;
+  }
+
+  @media (--mobile) {
+    font-size: 1.6rem;
+  }
 }
 
 .svg-filters {
@@ -54,13 +96,4 @@ p {
   visibility: hidden;
   width: 1px;
   height: 1px;
-}
-
-.main-container {}
-
-.container {
-  max-width: calc(1140px + 3rem);
-  margin: 0 auto;
-  padding-left: 1.5rem;
-  padding-right: 1.5rem;
 }
