@@ -1,4 +1,4 @@
-@import '../layouts/root.css';
+@import '../layouts/variables.css';
 
 .nav {
   font-weight: 500;
