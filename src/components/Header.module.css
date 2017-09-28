@@ -2,11 +2,9 @@
 
 .header {
   position: fixed;
+  composes: container from '../layouts/container.css';
   left: 0;
   right: 0;
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  margin-top: 1.5rem;
   z-index: var(--z-index-header);
   opacity: 0;
   visibility: hidden;
@@ -17,6 +15,13 @@
     opacity: 1;
     visibility: visible;
   }
+}
+
+.headerInner {
+  display: grid;
+  grid-column: main;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 1.5rem;
 }
 
 .logo {

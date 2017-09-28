@@ -9,13 +9,15 @@ import Nav from './Nav';
 import Logo from './Logo';
 
 const Header = ({ isIntroDone }) =>
-  <header className={classnames(`${styles.header} container`, {
+  <header className={classnames(styles.header, {
     [styles.visible]: isIntroDone
   })}>
-    <div>
-      {isIntroDone && <Logo className={styles.logo} />}
+    <div className={styles.headerInner}>
+      <div>
+        {isIntroDone && <Logo className={styles.logo} />}
+      </div>
+      <Nav />
     </div>
-    <Nav />
   </header>;
 
 const mapStateToProps = ({ isIntroDone }) => {
