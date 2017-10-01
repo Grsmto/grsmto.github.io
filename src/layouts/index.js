@@ -11,10 +11,10 @@ import Header from '../components/Header';
 const TemplateWrapper = ({ children }) =>
   <div className="main-container">
     <Helmet
-      title="Gatsby Default Starter"
+      title="Adrien Denat"
       meta={[
-        { name: 'description', content: 'Sample' },
-        { name: 'keywords', content: 'sample, something' }
+        { name: 'description', content: 'Frontend developer freelance' },
+        { name: 'keywords', content: 'frontend, developer, freelance' }
       ]}
     />
     <Header />
