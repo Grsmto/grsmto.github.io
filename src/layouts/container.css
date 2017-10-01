@@ -1,6 +1,6 @@
 .container {
   display: grid;
-  grid-template-columns: [full-start] minmax(1.5rem, 1fr) [main-start] minmax(0, 71.25rem) [main-end] minmax(1.5rem, 1fr) [full-end];
+  grid-template-columns: [full-start] minmax(2rem, 1fr) [main-start] minmax(0, 74rem) [main-end] minmax(2rem, 1fr) [full-end];
 }
 
 .container-inner {
