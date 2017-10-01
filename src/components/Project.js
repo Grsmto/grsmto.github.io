@@ -3,15 +3,28 @@ import classnames from 'classnames';
 import { Motion, spring, presets } from 'react-motion';
 
 import styles from './Project.module.css';
-import videoFeastIt from '../assets/videos/feast-it.mp4';
 
 const opacity = (x) => Math.max(0, Math.min(1, x));
+const SM_BREAKPOINT = "600px";
 
 export default class Project extends Component {
   constructor(props) {
     super(props);
     this.state = {};
     this.projectEl = null;
+    this.onResize = this.onResize.bind(this);
+  }
+
+  componentDidMount() {
+    window.addEventListener('onresize', this.onResize);
+
+    if (this.props.isOnScreen) {
+      this.video.play();
+    }
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('onresize', this.onResize);
   }
 
   shouldComponentUpdate(nextProps) {
@@ -21,16 +34,33 @@ export default class Project extends Component {
     return false;
   }
 
+  componentWillReceiveProps(nextProps) {
+    if (this.props.isOnScreen !== nextProps.isOnScreen) {
+      if (nextProps.isOnScreen) {
+        this.video.play();
+      } else {
+        this.video.pause();
+      }
+    }
+  }
+
+  onResize() {
+    this.setState({
+      isViewportSizeSm: window.matchMedia(`(min-width: ${SM_BREAKPOINT})`).matches
+    });
+  }
+
   render() {
-    const { title, description, html, scrollY, isOnScreen } = this.props;
+    const { title, description, html, videos, scrollY, isOnScreen } = this.props;
     const elHeight = this.projectEl ? this.projectEl.offsetHeight : 1;
 
     return (
       <section className={styles.project}>
         <div className={styles.videoContainer}>
-          <video className={styles.video}>
-            <source src={videoFeastIt} type="video/mp4" />
-          </video>
+        <video className={styles.video} ref={r => this.video = r} loop>
+          <source src={require(`../assets/videos/${videos.desktop}.webm`)} type="video/webm" />
+        </video>
+
         </div>
         <Motion
           style={{

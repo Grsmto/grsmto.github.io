@@ -19,11 +19,16 @@ const Projects = ({ data, documentElement, topTop, topBottom, isVisible }) =>
             title={node.frontmatter.title}
             description={node.frontmatter.description}
             html={node.html}
+            videos={{
+              mobile: node.frontmatter.videoMobile,
+              desktop: node.frontmatter.videoDesktop
+            }}
             scrollY={scrollY}
             posTop={posTopTop}
             posTopBottom={posTopBottom}
             isOnScreen={isVisible && documentElement.clientHeight >= -scrollY}
           />}
+
       </TrackedDiv>
     )}
   </div>;
