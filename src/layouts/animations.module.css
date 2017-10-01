@@ -10,16 +10,16 @@
 }
 
 @keyframes appearLeft {
-  0% { transform: translate3d(90px, 60px, 0) rotateZ(10deg); opacity: 0; }
-  33% { transform: translate3d(90px, 0, 0); opacity: 1; }
-  38% { transform: translate3d(90px, 0, 0); opacity: 1; }
+  0% { transform: translate3d(1.4em, 1.5em, 0) rotateZ(10deg); opacity: 0; }
+  28% { transform: translate3d(1.4em, 0, 0); }
+  38% { transform: translate3d(1.4em, 0, 0); opacity: 1; }
   54% { transform: translate3d(0, 0, 0); }
 }
 
 @keyframes appearRight {
-  0% { transform: translate3d(-90px, 60px, 0) rotateZ(10deg); opacity: 0; }
-  33% { transform: translate3d(-90px, 0, 0); opacity: 1; }
-  38% { transform: translate3d(-90px, 0, 0); opacity: 1; }
+  0% { transform: translate3d(-1.4em, 1.5em, 0) rotateZ(10deg); opacity: 0; }
+  28% { transform: translate3d(-1.4em, 0, 0); }
+  38% { transform: translate3d(-1.4em, 0, 0); opacity: 1; }
   54% { transform: translate3d(0, 0, 0); }
 }
 

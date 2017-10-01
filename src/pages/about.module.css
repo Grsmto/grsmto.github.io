@@ -25,7 +25,7 @@
     padding-top: 50vh;
   }
 
-  @media (width <= 600px) {
+  @media (--mobile) {
     justify-content: flex-start;
     padding-top: 100px;
     padding-bottom: 100vw;
@@ -34,6 +34,14 @@
 
 .title {
   composes: title from '../layouts/index.css';
+
+  & :global(br) {
+    display: none;
+
+    @media (--mobile) {
+      display: block;
+    }
+  }
 }
 
 .description {
