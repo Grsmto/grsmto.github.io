@@ -2,6 +2,7 @@ import React from 'react';
 import classnames from 'classnames';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
+import Link from 'gatsby-link';
 
 import styles from './Header.module.css';
 
@@ -14,7 +15,14 @@ const Header = ({ isIntroDone }) =>
   })}>
     <div className={styles.headerInner}>
       <div>
-        {isIntroDone && <Logo className={styles.logo} />}
+        {isIntroDone &&
+          <Link
+            to="/"
+            exact
+          >
+            <Logo className={styles.logo} />
+          </Link>
+        }
       </div>
       <Nav />
     </div>
