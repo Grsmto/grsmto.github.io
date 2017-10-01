@@ -13,24 +13,26 @@
     /* Basic web fallback */
     "Helvetica Neue", Arial, sans-serif;
 
+  --black: #121417;
   --red: #F67979;
   --yellow: #FFF17C;
 
   --underlined: {
-    text-shadow: 2px 1px 0 #000, -2px 1px 0 #000, -2px -2px 0 #000;
-    box-shadow: inset -2px -1px 0 #000, inset 0 -2px 0 #fff;
+    box-shadow: inset 0 -1px 0 var(--black), inset 0 -2px 0 #fff;
   };
 
   --underlined-double: {
-    text-shadow: 2px 1px 0 #000, -2px 1px 0 #000, -2px -2px 0 #000;
-    box-shadow: inset -2px -1px 0 #000, inset 0 -2px 0 #fff, inset 0 -3px 0 #000, inset 0 -4px 0 #fff;
+    box-shadow: inset 0 0px 0 var(--black), inset 0 -1px 0 #fff, inset 0 -2px 0 var(--black), inset 0 -3px 0 #fff;
   }
 
   --ease-in-out-expo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
   --ease-in-out-quint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+  --ease-in-sine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
 
   --z-index-header: 10;
   --z-index-intro: 9;
+  --z-index-projects: 8;
+  --z-index-footer: 7;
 
   @custom-media --max-width (width <= 1140px);
   @custom-media --mobile (width <= 600px);
