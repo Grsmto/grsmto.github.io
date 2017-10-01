@@ -20,15 +20,16 @@ html {
   background-color: rgba(255, 241, 124, 0.99);
   color: black;
   opacity: 1;
+  text-shadow: none;
 }
 
 body {
   font-family: Roboto, var(--font-family-sans-serif);
-  background-color: black;
+  background-color: var(--black);
   color: white;
   overflow-y: scroll;
   min-height: 100vh;
-  font-size: 1.5rem;
+  font-size: 1.4rem;
 
   @media (width <= 1024px) {
     font-size: 1.2rem;

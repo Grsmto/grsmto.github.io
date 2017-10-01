@@ -12,9 +12,11 @@
   align-items: center;
   z-index: var(--z-index-intro);
   composes: logo from "./Logo.module.css";
+  background-color: var(--black);
 
   &.hidden {
-    transition: all 0.5s;
+    transition: all 0.5s 0.8s;
+    opacity: 0;
     visibility: hidden;
   }
 }
@@ -24,6 +26,7 @@
   font-size: 4rem;
   letter-spacing: 1.5px;
   animation: disappearRight 0.5s 4s var(--ease-in-out-quint) forwards;
+  will-change: transform opacity;
 
   @media (--mobile) {
     font-size: 2rem;
