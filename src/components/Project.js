@@ -4,8 +4,8 @@ import { Motion, spring, presets } from 'react-motion';
 
 import styles from './Project.module.css';
 
-const opacity = (x) => Math.max(0, Math.min(1, x));
-const SM_BREAKPOINT = "600px";
+const opacity = x => Math.max(0, Math.min(1, x));
+const SM_BREAKPOINT = '600px';
 
 export default class Project extends Component {
   constructor(props) {
@@ -46,21 +46,31 @@ export default class Project extends Component {
 
   onResize() {
     this.setState({
-      isViewportSizeSm: window.matchMedia(`(min-width: ${SM_BREAKPOINT})`).matches
+      isViewportSizeSm: window.matchMedia(`(min-width: ${SM_BREAKPOINT})`)
+        .matches
     });
   }
 
   render() {
-    const { title, description, html, videos, scrollY, isOnScreen } = this.props;
+    const {
+      title,
+      description,
+      html,
+      videos,
+      scrollY,
+      isOnScreen
+    } = this.props;
     const elHeight = this.projectEl ? this.projectEl.offsetHeight : 1;
 
     return (
       <section className={styles.project}>
         <div className={styles.videoContainer}>
-        <video className={styles.video} ref={r => this.video = r} loop>
-          <source src={require(`../assets/videos/${videos.desktop}.webm`)} type="video/webm" />
-        </video>
-
+          <video className={styles.video} ref={r => (this.video = r)} loop>
+            <source
+              src={require(`../assets/videos/${videos.desktop}.webm`)}
+              type="video/webm"
+            />
+          </video>
         </div>
         <Motion
           style={{
@@ -78,6 +88,7 @@ export default class Project extends Component {
             ),
             y: spring(Math.max(-scrollY / 2, -120)),
             y2: spring(Math.max(-scrollY / 1.5, -200))
+            //freq: spring(Math.abs(wheelDelta.pixelY) > 10 ? Math.abs(wheelDelta.pixelY) : 0 )
           }}
         >
           {currentStyles =>
@@ -90,10 +101,14 @@ export default class Project extends Component {
                 style={{ opacity: currentStyles.opacityBg }}
               />
               <div className={styles.projectInfosInner}>
-                <h1 className={classnames(styles.title, {
-                  [styles.titleAppear]: isOnScreen
-                })}>
-                  <span>{title}</span>
+                <h1
+                  className={classnames(styles.title, {
+                    [styles.titleAppear]: isOnScreen
+                  })}
+                >
+                  <span>
+                    {title}
+                  </span>
                 </h1>
                 <h2
                   className={styles.description}
@@ -113,6 +128,18 @@ export default class Project extends Component {
                   dangerouslySetInnerHTML={{ __html: html }}
                 />
               </div>
+              {/*<svg
+                xmlns="http://www.w3.org/2000/svg"
+                version="1.1"
+                className="svg-filters"
+              >
+                <defs>
+                  <filter id="filter-glitch-3">
+
+                    <feGaussianBlur in="SourceGraphic" stdDeviation={`0 ${currentStyles.freq / 3}} result="blur" />
+                  </filter>
+                </defs>
+              </svg>*/}
             </div>}
         </Motion>
       </section>

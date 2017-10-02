@@ -10,19 +10,17 @@ import Nav from './Nav';
 import Logo from './Logo';
 
 const Header = ({ isIntroDone }) =>
-  <header className={classnames(styles.header, {
-    [styles.visible]: isIntroDone
-  })}>
+  <header
+    className={classnames(styles.header, {
+      [styles.visible]: isIntroDone
+    })}
+  >
     <div className={styles.headerInner}>
       <div>
         {isIntroDone &&
-          <Link
-            to="/"
-            exact
-          >
+          <Link to="/" exact>
             <Logo className={styles.logo} />
-          </Link>
-        }
+          </Link>}
       </div>
       <Nav />
     </div>
@@ -30,6 +28,6 @@ const Header = ({ isIntroDone }) =>
 
 const mapStateToProps = ({ isIntroDone }) => {
   return { isIntroDone };
-}
+};
 
 export default withRouter(connect(mapStateToProps)(Header));

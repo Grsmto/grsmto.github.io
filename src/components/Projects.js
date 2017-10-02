@@ -28,7 +28,6 @@ const Projects = ({ data, documentElement, topTop, topBottom, isVisible }) =>
             posTopBottom={posTopBottom}
             isOnScreen={isVisible && documentElement.clientHeight >= -scrollY}
           />}
-
       </TrackedDiv>
     )}
   </div>;
