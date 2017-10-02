@@ -6,12 +6,12 @@ const initialState = {
 
 const reducer = (state, action) => {
   return { ...state, ...action.payload };
-}
+};
 
-const createStore = () => reduxCreateStore(
-  reducer,
-  initialState,
-  typeof window !== 'undefined' && window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-);
+const createStore = () =>
+  reduxCreateStore(
+    reducer,
+    initialState
+  );
 
 export default createStore;

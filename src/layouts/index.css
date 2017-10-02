@@ -1,5 +1,5 @@
 @import 'normalize.css';
-@import 'basscss';
+@import 'basscss/css/basscss.css';
 
 @import './variables.css';
 @import './container.css';

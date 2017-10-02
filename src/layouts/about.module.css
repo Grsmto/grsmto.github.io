@@ -33,15 +33,15 @@
 }
 
 .title {
-  composes: title from '../layouts/index.css';
+  /*composes: title from '../layouts/index.css';*/
+}
 
-  & :global(br) {
-    display: none;
+.titleBr {
+  /*display: none;
 
-    @media (--mobile) {
-      display: block;
-    }
-  }
+  @media (--mobile) {
+    display: block;
+  }*/
 }
 
 .description {

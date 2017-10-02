@@ -4,7 +4,7 @@ import Helmet from 'react-helmet';
 
 import mutateStore from '../state/mutateStore';
 
-import styles from './About.module.css';
+import styles from '../layouts/about.module.css';
 
 import bgJpg from '../assets/images/me.jpg';
 import bgWebP from '../assets/images/me.webp';
@@ -19,18 +19,20 @@ class About extends React.Component {
   render() {
     return (
       <div className={styles.about}>
-        <Helmet
-          title="Adrien Denat | About"
-        />
+        <Helmet title="Adrien Denat | About" />
         <div className={styles.container}>
           <div className={styles.inner}>
-            <h1 className={styles.title}>Oi! <br /> I’m Adrien,</h1>
-            <h2 className={styles.description}>freelance dev based in London,<br/>
+            <h1 className={styles.title}>
+              Oi! <br className={styles.titleBr} /> I’m Adrien,
+            </h1>
+            <h2 className={styles.description}>
+              freelance dev based in London,<br />
               currently working from Brazil.
             </h2>
             <p>
-              I love building websites and products with a meaning. <br/>
-              I like sharing about frontend development on my Twitter and sometimes publish articles.
+              I love building websites and products with a meaning. <br />
+              I like sharing about frontend development on my Twitter and
+              sometimes publish articles.
             </p>
             <a href="mailto:oi@adriendenat.com">oi@adriendenat.com</a>
           </div>
@@ -41,11 +43,8 @@ class About extends React.Component {
           <img className={styles.bgImg} src={bgJpg} alt="Me" />
         </picture>
       </div>
-    )
+    );
   }
 }
 
-export default connect(
-  null,
-  { mutateStore }
-)(About);
+export default connect(null, { mutateStore })(About);
