@@ -5,8 +5,19 @@
 }
 
 @keyframes appear {
-  0% { transform: translate3d(0, 100px, 0) rotateZ(10deg); opacity: 0; }
+  0% { transform: translate3d(0, 100px, 0) rotateZ(5deg); opacity: 0; }
   100% { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+@keyframes appearFlat {
+  0% { transform: translate3d(0, 40px, 0); opacity: 0; }
+  100% { transform: translate3d(0, 0, 0); opacity: 1; }
+}
+
+@keyframes pageTransition {
+  0% { transform: translate3d(0, 125vh, 0) rotateZ(10deg); }
+  50% { transform: translate3d(0, 0, 0); }
+  100% { transform: translate3d(0, -125vh, 0) rotateZ(-10deg); }
 }
 
 @keyframes appearLeft {
@@ -34,6 +45,6 @@
 }
 
 @keyframes disappearRight {
-  90% { opacity: 0;  }
-  100% { transform: translate3d(0, -60px, 0) rotateZ(-5deg); opacity: 0; }
+  70% { opacity: 0;  }
+  100% { transform: translate3d(0, -90px, 0) rotateZ(-5deg); opacity: 0; }
 }

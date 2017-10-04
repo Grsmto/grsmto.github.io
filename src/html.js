@@ -25,7 +25,6 @@ class Html extends Component {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
-          <title>Adrien Denat</title>
         </head>
         <body>
           <div

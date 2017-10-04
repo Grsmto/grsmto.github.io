@@ -29,10 +29,10 @@ body {
   color: white;
   overflow-y: scroll;
   min-height: 100vh;
-  font-size: 1.4rem;
+  font-size: 1.3rem;
 
   @media (width <= 1024px) {
-    font-size: 1.2rem;
+    font-size: 1.1rem;
   }
 
   @media (--mobile) {
@@ -65,6 +65,11 @@ a {
   color: var(--red);
   text-decoration: none;
   font-weight: 500;
+  transition: color 150ms;
+
+  &:hover {
+    color: white;
+  }
 }
 
 .title {
