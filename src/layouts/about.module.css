@@ -27,25 +27,33 @@
 
   @media (--mobile) {
     justify-content: flex-start;
-    padding-top: 100px;
+    padding-top: 20vh;
     padding-bottom: 100vw;
   }
 }
 
 .title {
-  /*composes: title from '../layouts/index.css';*/
-}
+  composes: title from '../layouts/index.css';
 
-.titleBr {
-  /*display: none;
+  & :global(br) {
+    display: none;
 
-  @media (--mobile) {
-    display: block;
-  }*/
+    @media (--mobile) {
+      display: block;
+    }
+  }
 }
 
 .description {
   composes: subtitle from '../layouts/index.css';
+}
+
+.shortBio {
+  margin-top: 1rem;
+}
+
+.email {
+  margin-top: 1rem;
 }
 
 .bg {
@@ -71,4 +79,14 @@
   width: auto;
   object-fit: contain;
   object-position: bottom right;
+}
+
+.socialButtons {
+  margin-top: 2rem;
+}
+
+.socialButton {
+  & + & {
+    margin-left: 1rem;
+  }
 }
