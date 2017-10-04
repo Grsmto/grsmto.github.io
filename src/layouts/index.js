@@ -4,7 +4,12 @@ import Helmet from 'react-helmet';
 
 import 'typeface-roboto';
 
-import './index.css';
+if (
+  process.env.NODE_ENV === `development` ||
+  (process.env.NODE_ENV === `production` && process.browser !== true)
+) {
+  require('./index.css');
+}
 
 import PageTransition from '../components/PageTransition';
 import Header from '../components/Header';
