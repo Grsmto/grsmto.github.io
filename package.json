@@ -16,6 +16,7 @@
     "react-motion": "^0.5.1",
     "react-redux": "^5.0.6",
     "react-track": "^0.4.4",
+    "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
     "typeface-roboto": "0.0.35"
   },
