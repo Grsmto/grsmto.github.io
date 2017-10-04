@@ -76,11 +76,11 @@ export default class Project extends Component {
         <div className={styles.videoContainer}>
           <video className={styles.video} ref={r => (this.video = r)} loop>
             <source
-              src={require(`${config.s3BucketUrl}/${videos.desktop}.webm`)}
+              src={`${config.s3BucketUrl}/${videos.desktop}.webm`}
               type="video/webm"
             />
             <source
-              src={require(`${config.s3BucketUrl}/${videos.desktop}.mp4`)}
+              src={`${config.s3BucketUrl}/${videos.desktop}.mp4`}
               type="video/mp4"
             />
           </video>
