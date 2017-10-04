@@ -11,9 +11,10 @@ if (
   require('./index.css');
 }
 
+import PageTransition from '../components/PageTransition';
 import Header from '../components/Header';
 
-const TemplateWrapper = ({ children }) =>
+const TemplateWrapper = ({ children, location }) =>
   <div className="main-container">
     <Helmet
       title="Adrien Denat"
@@ -23,7 +24,9 @@ const TemplateWrapper = ({ children }) =>
       ]}
     />
     <Header />
-    {children()}
+    <PageTransition location={location}>
+      {children()}
+    </PageTransition>
   </div>;
 
 TemplateWrapper.propTypes = {
