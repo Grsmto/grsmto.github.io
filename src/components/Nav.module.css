@@ -1,0 +1,39 @@
+@import '../layouts/variables.css';
+
+.nav {
+  letter-spacing: 1px;
+  font-size: 1.3rem;
+
+  @media (--mobile) {
+    font-size: 1.1rem;
+  }
+}
+
+.link {
+  position: relative;
+  color: white;
+  text-decoration: none;
+  display: inline-block;
+
+  &:hover {
+  }
+
+  &:before {
+    position: absolute;
+    left: 0;
+    content: attr(data-text);
+    z-index: -1;
+    color: var(--black);
+    -webkit-text-stroke: 4px var(--black);
+  }
+
+  &.active {
+    &:before {
+      @apply --underlined-double;
+
+      @media (--mobile) {
+        @apply --underlined;
+      }
+    }
+  }
+}

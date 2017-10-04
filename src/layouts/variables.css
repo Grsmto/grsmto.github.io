@@ -1,0 +1,41 @@
+:root {
+  --font-family-sans-serif:
+    /* Safari for OS X and iOS (San Francisco) */
+    -apple-system,
+    /* Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android */
+    system-ui,
+    /* Chrome < 56 for OS X (San Francisco) */
+    BlinkMacSystemFont,
+    /* Windows */
+    "Segoe UI",
+    /* Android */
+    "Roboto",
+    /* Basic web fallback */
+    "Helvetica Neue", Arial, sans-serif;
+
+  --black: #121417;
+  --red: #F67979;
+  --yellow: #FFF17C;
+
+  --underlined: {
+    box-shadow: inset 0 -1px 0 var(--black), inset 0 -2px 0 #fff;
+  };
+
+  --underlined-double: {
+    box-shadow: inset 0 0px 0 var(--black), inset 0 -1px 0 #fff, inset 0 -2px 0 var(--black), inset 0 -3px 0 #fff;
+  }
+
+  --ease-in-out-expo: cubic-bezier(1.000, 0.000, 0.000, 1.000);
+  --ease-in-out-quint: cubic-bezier(0.860, 0.000, 0.070, 1.000);
+  --ease-in-out-quart: cubic-bezier(0.770, 0.000, 0.175, 1.000);
+  --ease-in-sine: cubic-bezier(0.470, 0.000, 0.745, 0.715);
+
+  --z-index-transition: 10;
+  --z-index-header: 9;
+  --z-index-intro: 8;
+  --z-index-projects: 7;
+  --z-index-footer: 6;
+
+  @custom-media --max-width (width <= 1140px);
+  @custom-media --mobile (width <= 600px);
+}

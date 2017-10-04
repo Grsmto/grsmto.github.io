@@ -1,0 +1,28 @@
+@import '../layouts/variables.css';
+
+.header {
+  position: fixed;
+  composes: container from '../layouts/container.css';
+  left: 0;
+  right: 0;
+  z-index: var(--z-index-header);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 300ms;
+
+  &.visible {
+    opacity: 1;
+    visibility: visible;
+  }
+}
+
+.headerInner {
+  display: grid;
+  grid-column: main;
+  grid-template-columns: 1fr 1fr;
+  margin-top: 3rem;
+}
+
+.logo {
+  display: inline-block;
+}
