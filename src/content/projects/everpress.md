@@ -3,6 +3,8 @@ title: "Everpress"
 description: "Personalised tees editor"
 videoDesktop: "feast-it"
 videoMobile: "feast-it"
+url: "https://everpress.com/"
+tech: "Backbone, Marionette"
 ---
 
 Using Everpress, artists can sell clothing merchandise to fans anywhere in the world.

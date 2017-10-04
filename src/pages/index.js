@@ -66,6 +66,10 @@ export const query = graphql`
           frontmatter {
             title
             description
+            videoDesktop
+            videoMobile
+            url
+            tech
           }
           html
         }

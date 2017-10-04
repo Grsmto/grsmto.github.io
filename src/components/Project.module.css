@@ -4,7 +4,7 @@
 .project {
   position: relative;
   composes: container from '../layouts/container.css';
-  height: 300vh;
+  height: 350vh;
 }
 
 .videoContainer {
@@ -13,6 +13,7 @@
   top: 0;
   bottom: auto;
   height: 100vh;
+  overflow: hidden;
 }
 
 .video {
@@ -53,11 +54,21 @@
 
 .title {
   composes: title from '../layouts/index.css';
-  margin-top: 60vh;
+  margin-top: 55vh;
+  margin-left: -0.08em;
 
-  &.titleAppear :global(span) {
+  & :global(span) {
     display: inline-block;
+  }
+}
+
+.isOnScreen {
+  & .title :global(span) {
     animation: appear 1s 600ms var(--ease-in-out-quint) both;
+  }
+
+  & .description :global(span) {
+    animation: appearFlat 1.4s 1000ms var(--ease-in-out-quint) both;
   }
 }
 
@@ -65,18 +76,85 @@
   composes: subtitle from '../layouts/index.css';
   display: inline-block;
   will-change: opacity, transform;
-  margin-top: 3.5em;
+  margin-top: 1em;
+  margin-left: -0.08em;
 
   @media (--mobile) {
-    margin-top: 5em;
+    margin-top: 2em;
+  }
+
+  & :global(span) {
+    display: inline-block;
   }
 }
 
 .content {
   will-change: opacity, transform;
-  margin-top: 5em;
+  margin-top: 3em;
+  margin-left: -0.08em;
 
   @media (--mobile) {
     margin-top: 6em;
   }
+}
+
+.meta {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: center;
+
+  @media (--mobile) {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+.siteLinkContainer {
+  margin-left: auto;
+
+  @media (--mobile) {
+    margin-top: 1rem;
+  }
+}
+
+.siteLink {
+  display: inline-block;
+  font-size: 1.1rem;
+  padding-right: 1rem;
+  margin-right: -1rem;
+  transition: all 0.3s;
+
+  &:hover {
+    transform: translateX(-0.2rem);
+
+    & .siteLinkIcon {
+      transform: translateX(0.8rem);
+    }
+  }
+}
+
+.siteLinkIcon {
+  margin-left: 0.5rem;
+  vertical-align: middle;
+  transition: all 0.3s;
+}
+
+.tech {
+  text-transform: uppercase;
+  font-size: 1rem;
+
+  @media (width <= 1024px) {
+    font-size: 0.8rem;
+  }
+
+  @media (--mobile) {
+    font-size: 0.7rem;
+  }
+}
+
+.techLabel {
+  display: inline-block;
+  margin-right: 1rem;
+  margin-bottom: 0.25rem;
+  color: #79868E;
 }

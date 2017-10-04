@@ -4,6 +4,9 @@ import { Motion, spring, presets } from 'react-motion';
 
 import styles from './Project.module.css';
 
+import { IconArrow } from './Icons';
+import config from '../config';
+
 const opacity = x => Math.max(0, Math.min(1, x));
 const SM_BREAKPOINT = '600px';
 
@@ -57,38 +60,44 @@ export default class Project extends Component {
       description,
       html,
       videos,
+      url,
+      tech,
       scrollY,
       isOnScreen
     } = this.props;
     const elHeight = this.projectEl ? this.projectEl.offsetHeight : 1;
 
     return (
-      <section className={styles.project}>
+      <section
+        className={classnames(styles.project, {
+          [styles.isOnScreen]: isOnScreen
+        })}
+      >
         <div className={styles.videoContainer}>
           <video className={styles.video} ref={r => (this.video = r)} loop>
             <source
-              src={require(`../assets/videos/${videos.desktop}.webm`)}
+              src={require(`${config.s3BucketUrl}/${videos.desktop}.webm`)}
               type="video/webm"
+            />
+            <source
+              src={require(`${config.s3BucketUrl}/${videos.desktop}.mp4`)}
+              type="video/mp4"
             />
           </video>
         </div>
         <Motion
           style={{
             opacityBg: spring(
-              opacity(1 - (scrollY - 300) / (elHeight / 2.5)),
-              presets.stiff
-            ),
-            opacityDescription: spring(
-              opacity((scrollY - 30) / (elHeight / 15)),
+              opacity(1 - (scrollY - 430) / (elHeight / 2.5)),
               presets.stiff
             ),
             opacityContent: spring(
-              opacity((scrollY - 150) / (elHeight / 15)),
+              opacity((scrollY - 50) / (elHeight / 20)),
               presets.stiff
             ),
-            y: spring(Math.max(-scrollY / 2, -120)),
-            y2: spring(Math.max(-scrollY / 1.5, -200))
-            //freq: spring(Math.abs(wheelDelta.pixelY) > 10 ? Math.abs(wheelDelta.pixelY) : 0 )
+            y: spring(Math.max(-scrollY / 4, -40)),
+            y2: spring(Math.max(-scrollY / 2, -80)),
+            y3: spring(Math.max(-scrollY / 8, -80))
           }}
         >
           {currentStyles =>
@@ -102,9 +111,7 @@ export default class Project extends Component {
               />
               <div className={styles.projectInfosInner}>
                 <h1
-                  className={classnames(styles.title, {
-                    [styles.titleAppear]: isOnScreen
-                  })}
+                  className={classnames(styles.title)}
                 >
                   <span>
                     {title}
@@ -113,33 +120,39 @@ export default class Project extends Component {
                 <h2
                   className={styles.description}
                   style={{
-                    opacity: currentStyles.opacityDescription,
                     transform: `translateY(${currentStyles.y}px)`
                   }}
                 >
-                  {description}
+                  <span>
+                    {description}
+                  </span>
                 </h2>
                 <div
                   className={styles.content}
                   style={{
-                    opacity: currentStyles.opacityContent,
+                    opacity: Math.max(currentStyles.opacityContent, 0.2),
                     transform: `translateY(${currentStyles.y2}px)`
                   }}
                   dangerouslySetInnerHTML={{ __html: html }}
                 />
+                <div
+                  className={styles.meta}
+                  style={{
+                    opacity: currentStyles.opacityContent,
+                    transform: `translateY(${currentStyles.y3}px)`
+                  }}
+                >
+                  <div className={styles.tech}>
+                    <h4 className={styles.techLabel}>Tchnlgy: </h4>
+                    {tech}
+                  </div>
+                  <div className={styles.siteLinkContainer}>
+                    <a className={styles.siteLink} href={url} target="_blank">
+                      Visit site <IconArrow className={styles.siteLinkIcon} />
+                    </a>
+                  </div>
+                </div>
               </div>
-              {/*<svg
-                xmlns="http://www.w3.org/2000/svg"
-                version="1.1"
-                className="svg-filters"
-              >
-                <defs>
-                  <filter id="filter-glitch-3">
-
-                    <feGaussianBlur in="SourceGraphic" stdDeviation={`0 ${currentStyles.freq / 3}} result="blur" />
-                  </filter>
-                </defs>
-              </svg>*/}
             </div>}
         </Motion>
       </section>
