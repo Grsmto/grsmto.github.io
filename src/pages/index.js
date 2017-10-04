@@ -45,6 +45,7 @@ class IndexPage extends Component {
               topBottom={topBottom}
               isVisible={isIntroDone}
             />
+            <Footer />
           </div>
         }
       </TrackDocument>
