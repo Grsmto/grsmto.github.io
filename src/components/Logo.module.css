@@ -19,12 +19,8 @@
 
 .name {
   animation: appear 1s var(--ease-in-out-quint);
-  @apply --underlined-double;
   color: white;
-
-  @media (--mobile) {
-    @apply --underlined;
-  }
+  @apply --underlined-double;
 }
 
 .subtitle {
