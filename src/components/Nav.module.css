@@ -1,11 +1,10 @@
 @import '../layouts/variables.css';
 
 .nav {
-  letter-spacing: 1px;
-  font-size: 1.3rem;
+  font-size: 1.2rem;
 
   @media (--mobile) {
-    font-size: 1.1rem;
+    font-size: 1rem;
   }
 }
 
@@ -14,26 +13,36 @@
   color: white;
   text-decoration: none;
   display: inline-block;
+  @apply --underlined-double;
+  padding-bottom: 5px;
 
-  &:hover {
+  &:before,
+  &:after {
+    transition: all 200ms var(--ease-out-quad);
+    transform: translateY(5px);
+    opacity: 0;
+    top: calc(100% - 0.15em - 5px);
   }
 
-  &:before {
-    position: absolute;
-    left: 0;
-    content: attr(data-text);
-    z-index: -1;
-    color: var(--black);
-    -webkit-text-stroke: 4px var(--black);
+  &:hover {
+    color: var(--grey-1);
+
+    &:before,
+    &:after {
+      border-color: var(--grey-1);
+      transform: translateY(0);
+      opacity: 1;
+    }
   }
 
   &.active {
-    &:before {
-      @apply --underlined-double;
+    color: white;
 
-      @media (--mobile) {
-        @apply --underlined;
-      }
+    &:before,
+    &:after {
+      opacity: 1;
+      transform: translateY(0);
+      border-color: white;
     }
   }
 }
