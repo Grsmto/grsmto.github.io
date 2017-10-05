@@ -40,7 +40,7 @@ class PageTransition extends React.Component {
               enter: styles.enter,
               exit: 'lol'
             }}
-            timeout={{ enter: 500, exit: 1000 }}
+            timeout={{ enter: 600, exit: 1000 }}
             onEnter={() => {
               this.setState({
                 isChangingPage: true

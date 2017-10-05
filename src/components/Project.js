@@ -13,7 +13,6 @@ const SM_BREAKPOINT = '600px';
 export default class Project extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
     this.projectEl = null;
     this.onResize = this.onResize.bind(this);
   }
@@ -92,12 +91,12 @@ export default class Project extends Component {
               presets.stiff
             ),
             opacityContent: spring(
-              opacity((scrollY - 50) / (elHeight / 20)),
+              Math.max(opacity((scrollY - 50) / (elHeight / 20)), 0.2),
               presets.stiff
             ),
             y: spring(Math.max(-scrollY / 4, -40)),
-            y2: spring(Math.max(-scrollY / 2, -80)),
-            y3: spring(Math.max(-scrollY / 8, -80))
+            y2: spring(Math.max(-scrollY / 4, -80)),
+            y3: spring(Math.max(-scrollY / 6, -80))
           }}
         >
           {currentStyles =>
@@ -110,9 +109,7 @@ export default class Project extends Component {
                 style={{ opacity: currentStyles.opacityBg }}
               />
               <div className={styles.projectInfosInner}>
-                <h1
-                  className={classnames(styles.title)}
-                >
+                <h1 className={classnames(styles.title)}>
                   <span>
                     {title}
                   </span>
@@ -127,29 +124,31 @@ export default class Project extends Component {
                     {description}
                   </span>
                 </h2>
-                <div
-                  className={styles.content}
-                  style={{
-                    opacity: Math.max(currentStyles.opacityContent, 0.2),
-                    transform: `translateY(${currentStyles.y2}px)`
-                  }}
-                  dangerouslySetInnerHTML={{ __html: html }}
-                />
-                <div
-                  className={styles.meta}
-                  style={{
-                    opacity: currentStyles.opacityContent,
-                    transform: `translateY(${currentStyles.y3}px)`
-                  }}
-                >
-                  <div className={styles.tech}>
-                    <h4 className={styles.techLabel}>Tchnlgy: </h4>
-                    {tech}
-                  </div>
-                  <div className={styles.siteLinkContainer}>
-                    <a className={styles.siteLink} href={url} target="_blank">
-                      Visit site <IconArrow className={styles.siteLinkIcon} />
-                    </a>
+                <div className={styles.contentContainer}>
+                  <div
+                    className={styles.content}
+                    style={{
+                      opacity: currentStyles.opacityContent,
+                      transform: `translateY(${currentStyles.y2}px)`
+                    }}
+                    dangerouslySetInnerHTML={{ __html: html }}
+                  />
+                  <div
+                    className={styles.meta}
+                    style={{
+                      opacity: currentStyles.opacityContent,
+                      transform: `translateY(${currentStyles.y3}px)`
+                    }}
+                  >
+                    <div className={styles.tech}>
+                      <h4 className={styles.techLabel}>Tchnlgy: </h4>
+                      {tech}
+                    </div>
+                    <div className={styles.siteLinkContainer}>
+                      <a className={styles.siteLink} href={url} target="_blank">
+                        Visit site <IconArrow className={styles.siteLinkIcon} />
+                      </a>
+                    </div>
                   </div>
                 </div>
               </div>
