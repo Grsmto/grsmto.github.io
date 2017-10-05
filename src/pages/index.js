@@ -14,7 +14,6 @@ import Footer from '../components/Footer';
 import Projects from '../components/Projects';
 
 class IndexPage extends Component {
-
   onIntroEnd() {
     this.props.mutateStore({
       isIntroDone: true
@@ -26,12 +25,10 @@ class IndexPage extends Component {
     const hideScrollStyle = {
       maxHeight: '100vh',
       overflow: 'hidden'
-    }
+    };
 
     return (
-      <TrackDocument
-        formulas={[getDocumentElement, topTop, topBottom]}
-      >
+      <TrackDocument formulas={[getDocumentElement, topTop, topBottom]}>
         {(documentElement, topTop, topBottom) =>
           <div className="page" style={!isIntroDone ? hideScrollStyle : null}>
             <Intro
@@ -46,17 +43,15 @@ class IndexPage extends Component {
               isVisible={isIntroDone}
             />
             <Footer />
-          </div>
-        }
+          </div>}
       </TrackDocument>
     );
   }
 }
 
-export default connect(
-  ({ isIntroDone }) => ({ isIntroDone }),
-  { mutateStore }
-)(IndexPage);
+export default connect(({ isIntroDone }) => ({ isIntroDone }), { mutateStore })(
+  IndexPage
+);
 
 export const query = graphql`
   query IndexQuery {
