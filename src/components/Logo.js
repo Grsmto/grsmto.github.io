@@ -10,7 +10,7 @@ export default class Logo extends Component {
     return (
       <div className={classnames(className, styles.logo)}>
         <span>
-          <span className={styles.name}>ad.</span>
+          <span className={styles.name}>adrien.</span>
           <span className={styles.subtitle}>dvlpr</span>
         </span>
       </div>

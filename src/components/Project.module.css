@@ -64,11 +64,15 @@
 
 .isOnScreen {
   & .title :global(span) {
-    animation: appear 1s 600ms var(--ease-in-out-quint) both;
+    animation: appear 1s var(--ease-in-out-quint) both;
   }
 
   & .description :global(span) {
-    animation: appearFlat 1.4s 1000ms var(--ease-in-out-quint) both;
+    animation: appearFlat 1.4s 200ms var(--ease-in-out-quint) both;
+  }
+
+  & .contentContainer {
+    animation: appearFlat 1.4s 400ms var(--ease-in-out-quint) both;
   }
 }
 
@@ -99,7 +103,7 @@
 }
 
 .meta {
-  margin-top: 1.5rem;
+  margin-top: 2.5rem;
   display: flex;
   align-items: center;
 
@@ -156,5 +160,5 @@
   display: inline-block;
   margin-right: 1rem;
   margin-bottom: 0.25rem;
-  color: #79868E;
+  color: var(--grey-1);
 }

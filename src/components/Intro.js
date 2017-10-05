@@ -15,7 +15,7 @@ export default class Intro extends Component {
       >
         <span
           className={classnames(styles.logoInner)}
-          onAnimationStart={e => {
+          onAnimationEnd={e => {
             if (e.target === this.logo) {
               onEnd();
             }
@@ -25,7 +25,7 @@ export default class Intro extends Component {
           }}
         >
           <span className={styles.name}>adrien</span>{' '}
-          <span className={styles.subtitle}>dvlpr</span>{' '}
+          <span className={styles.subtitle}>developer</span>{' '}
           <span className={styles.surname}>denat</span>
         </span>
       </div>

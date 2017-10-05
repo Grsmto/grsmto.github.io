@@ -8,10 +8,6 @@ const reducer = (state, action) => {
   return { ...state, ...action.payload };
 };
 
-const createStore = () =>
-  reduxCreateStore(
-    reducer,
-    initialState
-  );
+const createStore = () => reduxCreateStore(reducer, initialState);
 
 export default createStore;
