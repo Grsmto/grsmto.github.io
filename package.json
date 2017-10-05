@@ -1,7 +1,7 @@
 {
   "name": "grsmto.github.io",
   "description": "Grsmto portfolio",
-  "version": "1.0.2",
+  "version": "1.1.0",
   "author": "Adrien Denat <oi@adriendenat.com>",
   "dependencies": {
     "basscss": "^8.0.2",
