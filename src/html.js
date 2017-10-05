@@ -7,8 +7,28 @@ const propTypes = {
   postBodyComponents: PropTypes.node.isRequired
 };
 
+let stylesStr;
+if (process.env.NODE_ENV === `production`) {
+  try {
+    stylesStr = require(`!raw-loader!../public/styles.css`);
+  } catch (e) {
+    console.log(e);
+  }
+}
+
 class Html extends Component {
   render() {
+    let css;
+
+    if (process.env.NODE_ENV === `production`) {
+      css = (
+        <style
+          id="gatsby-inlined-css"
+          dangerouslySetInnerHTML={{ __html: stylesStr }}
+        />
+      );
+    }
+
     return (
       <html op="news" lang="en">
         <head>
@@ -25,6 +45,8 @@ class Html extends Component {
             name="viewport"
             content="width=device-width, initial-scale=1.0"
           />
+
+          {css}
         </head>
         <body>
           <div
