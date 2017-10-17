@@ -11,7 +11,7 @@ export default class Logo extends Component {
       <div className={classnames(className, styles.logo)}>
         <span>
           <span className={styles.name}>adrien.</span>
-          <span className={styles.subtitle}>dvlpr</span>
+          <span className={styles.subtitle}>dev</span>
         </span>
       </div>
     );
