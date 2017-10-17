@@ -5,6 +5,8 @@ import Link from 'gatsby-link';
 
 import styles from './Footer.module.css';
 
+import SocialButtons from './SocialButtons';
+
 const Footer = () =>
   <footer className={styles.container}>
     <div className={styles.inner}>
@@ -20,6 +22,7 @@ const Footer = () =>
           about me
         </Link>.
       </span>
+      <SocialButtons />
     </div>
   </footer>;
 
