@@ -18,7 +18,7 @@
     "react-track": "^0.4.4",
     "react-transition-group": "^2.2.1",
     "redux": "^3.7.2",
-    "typeface-roboto": "0.0.35"
+    "typeface-cooper-hewitt": "0.0.35"
   },
   "keywords": [
     "gatsby"
