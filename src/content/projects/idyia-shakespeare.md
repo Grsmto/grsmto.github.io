@@ -5,6 +5,7 @@ videoDesktop: "ishakespeare"
 videoMobile: "ishakespeare"
 url: "https://idyiashakespeare.com/"
 tech: "React, Redux, Node, Webpack"
+year: 2016
 ---
 
 Interactive content, quizzes, instant glossary definitions are some of the features we built to help students accelerate their learning using the Idyia platform. Teachers keep track of students progress through the plays in the admin by viewing their quiz scores, notes and engagement.

@@ -24,6 +24,7 @@ const Projects = ({ data, documentElement, topTop, topBottom, isVisible }) =>
             }}
             url={node.frontmatter.url}
             tech={node.frontmatter.tech}
+            year={node.frontmatter.year}
             scrollY={scrollY}
             posTop={posTopTop}
             posTopBottom={posTopBottom}
