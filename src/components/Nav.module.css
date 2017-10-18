@@ -17,7 +17,6 @@
   display: inline-block;
   @apply --underlined-double;
   padding-bottom: 5px;
-  transition: all 100ms;
 
   &:before,
   &:after {
@@ -28,15 +27,14 @@
   }
 
   &:hover {
-    transform: rotateZ(1deg);
-    /*color: var(--grey-1);*/
+    color: var(--grey-1);
 
-    /*&:before,
+    &:before,
     &:after {
       border-color: var(--grey-1);
       transform: translateY(0);
       opacity: 1;
-    }*/
+    }
   }
 
   &.active {
