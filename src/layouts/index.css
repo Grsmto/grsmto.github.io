@@ -24,13 +24,13 @@ html {
 }
 
 body {
-  font-family: Cooper Hewitt, var(--font-family-sans-serif);
+  font-family: 'Cooper Hewitt', var(--font-family-sans-serif);
   background-color: var(--black);
   color: white;
   overflow-y: scroll;
   min-height: 100vh;
   font-size: 1.3rem;
-  font-weight: 200;
+  font-weight: 100;
 
   @media (width <= 1024px) {
     font-size: 1.1rem;

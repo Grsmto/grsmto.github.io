@@ -16,10 +16,9 @@
   composes: container from '../layouts/container.css';
 }
 
-.grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  clear: both;
+.containerLight {
+  composes: container;
+  background-color: #191919;
 }
 
 .hero {
@@ -60,6 +59,8 @@
 
   & :global(span:nth-of-type(3)) {
     margin-left: -0.1em;
+    outline: 50px solid transparent;
+    filter: url(#filter-glitch-1);
   }
 
   @media (--mobile) {
@@ -86,11 +87,6 @@
 
 .shortBio {
   margin-bottom: 4rem;
-}
-
-.bio {
-  margin-top: 10rem;
-  grid-column: 1/11;
 }
 
 .email {
@@ -143,10 +139,8 @@
 }
 
 .socialLink {
-  text-transform: uppercase;
+  @apply --heading;
   color: white;
-  font-weight: 800;
-  font-style: italic;
   font-size: var(--socialLinksBaseFontSize);
   line-height: var(--socialLinksBaseLineHeight);
 
@@ -159,4 +153,33 @@
     font-size: calc(var(--socialLinksBaseFontSize) + 60px);
     line-height: calc(var(--socialLinksBaseLineHeight) + 55px);
   }
+}
+
+.bioContainer {
+  composes: container-inner from '../layouts/container.css';
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  padding: 6rem 0;
+}
+
+.bio {
+  grid-column: 1/11;
+  margin-bottom: 0;
+}
+
+.localDateLabel {
+  font-size: 3rem;
+  @apply --heading;
+}
+
+.localDate {
+  margin-left: 1rem;
+  font-size: 5rem;
+  @apply --heading;
+}
+
+.flag {
+  outline: 20px solid transparent;
+  display: inline-block;
+  filter: url(#filter-wave-1);
 }
