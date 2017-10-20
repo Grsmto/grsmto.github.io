@@ -26,7 +26,6 @@ class About extends React.Component {
       brazilTime: undefined
     };
     this.setLocalTime = this.setLocalTime.bind(this);
-    this.flagWave = this.flagWave.bind(this);
   }
 
   componentDidMount() {
