@@ -23,7 +23,6 @@ class About extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      wave: 0,
       brazilTime: undefined
     };
     this.setLocalTime = this.setLocalTime.bind(this);
@@ -36,7 +35,6 @@ class About extends React.Component {
     });
 
     setInterval(this.setLocalTime, 1000);
-    setInterval(this.flagWave, 4000);
   }
 
   componentWillUnmount() {
@@ -47,18 +45,6 @@ class About extends React.Component {
     this.setState({
       brazilTime: format(mzone.tz(new Date, 'America/Sao_Paulo'), 'HH:mm:ss')
     });
-  }
-
-  flagWave() {
-    this.setState({
-      wave: 100
-    });
-
-    setTimeout(() => {
-      this.setState({
-        wave: 0
-      });
-    }, 3000);
   }
 
   render() {
