@@ -1,0 +1,11 @@
+@import '../layouts/variables.css';
+
+.socialButtons {
+  margin-top: 2rem;
+}
+
+.socialButton {
+  & + & {
+    margin-left: 1rem;
+  }
+}

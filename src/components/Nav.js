@@ -21,7 +21,7 @@ class Nav extends React.Component {
               to="/"
               exact
             >
-              .projects
+              projects
             </Link>
           </li>
           <li className="inline-block ml3">
@@ -30,7 +30,7 @@ class Nav extends React.Component {
               activeClassName={styles.active}
               to="/about"
             >
-              .about
+              about
             </Link>
           </li>
         </ul>

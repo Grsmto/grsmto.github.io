@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
-import 'typeface-roboto';
+import 'typeface-cooper-hewitt';
 
 if (
   process.env.NODE_ENV === `development` ||

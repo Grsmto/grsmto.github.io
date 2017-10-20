@@ -13,7 +13,7 @@
     /* Basic web fallback */
     "Helvetica Neue", Arial, sans-serif;
 
-  --black: #121417;
+  --black: #000;
   --red: #F67979;
   --yellow: #FFF17C;
   --grey-1: #79868E;
@@ -34,6 +34,12 @@
     &:after {
       margin-top: 2px;
     }
+  }
+
+  --heading {
+    font-style: italic;
+    font-weight: 800;
+    text-transform: uppercase;
   }
 
   --ease-in-out-expo: cubic-bezier(1.000, 0.000, 0.000, 1.000);

@@ -65,6 +65,7 @@ export const query = graphql`
             videoMobile
             url
             tech
+            year
           }
           html
         }

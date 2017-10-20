@@ -61,6 +61,7 @@ export default class Project extends Component {
       videos,
       url,
       tech,
+      year,
       scrollY,
       isOnScreen
     } = this.props;
@@ -140,15 +141,19 @@ export default class Project extends Component {
                       transform: `translateY(${currentStyles.y3}px)`
                     }}
                   >
-                    <div className={styles.tech}>
-                      <h4 className={styles.techLabel}>Tchnlgy: </h4>
+                    <div className={styles.metaContainer}>
+                      <h4 className={styles.metaLabel}>Technology: </h4>
                       {tech}
                     </div>
-                    <div className={styles.siteLinkContainer}>
-                      <a className={styles.siteLink} href={url} target="_blank">
-                        Visit site <IconArrow className={styles.siteLinkIcon} />
-                      </a>
+                    <div className={styles.metaContainer}>
+                      <h4 className={styles.metaLabel}>Year: </h4>
+                      {year}
                     </div>
+                  </div>
+                  <div className={styles.siteLinkContainer}>
+                    <a className={styles.siteLink} href={url} target="_blank">
+                      Visit site <IconArrow className={styles.siteLinkIcon} />
+                    </a>
                   </div>
                 </div>
               </div>

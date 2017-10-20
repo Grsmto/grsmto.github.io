@@ -15,7 +15,6 @@ module.exports = {
     sourceType: 'module',
     ecmaFeatures: {
       jsx: true,
-      generators: true,
       experimentalObjectRestSpread: true
     }
   },
@@ -54,7 +53,8 @@ module.exports = {
     'react/prop-types': [0],
     'react/react-in-jsx-scope': [0],
     'react/style-prop-object': [0],
+    'react/no-unescaped-entities': [0],
     'arrow-body-style': [0],
-    'jsx-a11y/href-no-hash': [0],
+    'jsx-a11y/href-no-hash': [0]
   }
 };
