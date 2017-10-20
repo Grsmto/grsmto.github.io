@@ -17,7 +17,6 @@ import styles from '../layouts/about.module.css';
 
 import bgJpg from '../assets/images/me.jpg';
 import bgWebP from '../assets/images/me.webp';
-import rippleImg from '../assets/images/ripple.png';
 
 class About extends React.Component {
   constructor(props) {
@@ -59,26 +58,14 @@ class About extends React.Component {
               }}
             >
               {currentStyles =>
-                <div>
-                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" className="svg-filters">
-                    <defs>
-                      <filter id="filter-glitch-1">
-                        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="1" result="warp" />
-                        <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale={Math.min(currentStyles.scrollY / 5, 200)} in="SourceGraphic" in2="warp" />
-                      </filter>
-                    </defs>
-                  </svg>
-                  <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" version="1.1" className="svg-filters">
-                    <defs>
-                      <filter id="filter-wave-1">
-                        <feImage xlinkHref={rippleImg} x={(-currentStyles.wave * 3) - 20} y={(-currentStyles.wave * 2) + 35} width={currentStyles.wave * 11} height={currentStyles.wave * 4} result="ripple"></feImage>
-                        <feDisplacementMap xChannelSelector="R" yChannelSelector="G" colorInterpolationFilters="sRGB" in="SourceGraphic" in2="ripple" scale="6" result="dm" />
-                        <feComposite operator="in" in2="ripple"></feComposite>
-                        <feComposite in2="SourceGraphic"></feComposite>
-                      </filter>
-                    </defs>
-                  </svg>
-                </div>
+                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" className="svg-filters">
+                  <defs>
+                    <filter id="filter-glitch-1">
+                      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="1" result="warp" />
+                      <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale={Math.min(currentStyles.scrollY / 5, 200)} in="SourceGraphic" in2="warp" />
+                    </filter>
+                  </defs>
+                </svg>
               }
             </Motion>
             <div className={styles.hero}>
