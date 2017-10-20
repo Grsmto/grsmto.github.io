@@ -2,8 +2,10 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Helmet from 'react-helmet';
 import classnames from 'classnames';
+import { format } from 'date-fns';
 
 import mutateStore from '../state/mutateStore';
+import mzone from '../utils/timezone';
 
 import styles from '../layouts/about.module.css';
 
@@ -15,6 +17,16 @@ class About extends React.Component {
     this.props.mutateStore({
       isIntroDone: true
     });
+    setInterval(this.setLocalTime, 1000);
+  componentWillUnmount() {
+    clearInterval(this.setLocalTime);
+  }
+
+  setLocalTime() {
+    this.setState({
+      brazilTime: format(mzone.tz(new Date, 'America/Sao_Paulo'), 'HH:mm:ss')
+    });
+  }
   }
 
   render() {
