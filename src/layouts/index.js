@@ -2,8 +2,6 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import Helmet from 'react-helmet';
 
-import 'typeface-cooper-hewitt';
-
 if (
   process.env.NODE_ENV === `development` ||
   (process.env.NODE_ENV === `production` && process.browser !== true)

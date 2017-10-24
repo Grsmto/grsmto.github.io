@@ -1,6 +1,7 @@
 @import 'normalize.css';
 @import 'basscss/css/basscss.css';
 
+@import './font-faces.css';
 @import './variables.css';
 @import './container.css';
 
