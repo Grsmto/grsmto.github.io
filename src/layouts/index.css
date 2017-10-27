@@ -30,7 +30,7 @@ body {
   overflow-y: scroll;
   min-height: 100vh;
   font-size: 1.3rem;
-  font-weight: 100;
+  font-weight: 300;
 
   @media (width <= 1024px) {
     font-size: 1.1rem;
@@ -44,7 +44,7 @@ body {
 h1, h2, h3, h4, h5, h6 {
   margin-top: 0;
   margin-bottom: .5rem;
-  font-weight: 400;
+  font-weight: 300;
 }
 
 h1 {
@@ -71,6 +71,13 @@ a {
   &:hover {
     color: white;
   }
+}
+
+b, strong {
+  font-weight: 300;
+  font-style: normal;
+  font-size: 1rem;
+  color: var(--grey-1);
 }
 
 blockquote {

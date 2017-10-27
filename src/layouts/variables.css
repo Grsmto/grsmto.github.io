@@ -1,5 +1,7 @@
 :root {
   --font-family-sans-serif:
+    /* Android */
+    "Roboto",
     /* Safari for OS X and iOS (San Francisco) */
     -apple-system,
     /* Chrome >= 56 for OS X (San Francisco), Windows, Linux and Android */
@@ -8,8 +10,6 @@
     BlinkMacSystemFont,
     /* Windows */
     "Segoe UI",
-    /* Android */
-    "Roboto",
     /* Basic web fallback */
     "Helvetica Neue", Arial, sans-serif;
 
