@@ -53,6 +53,9 @@
   --z-index-projects: 7;
   --z-index-footer: 6;
 
-  @custom-media --max-width (width <= 1140px);
+  --max-width: 74rem;
+
+  @custom-media --desktop (width <= 1140px);
+  @custom-media --tablet (width <= 768px);
   @custom-media --mobile (width <= 600px);
 }

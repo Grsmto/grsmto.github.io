@@ -24,7 +24,7 @@ class About extends React.Component {
     this.state = {
       brazilTime: undefined
     };
-    this.setLocalTime = this.setLocalTime.bind(this);
+    this.localTimeInterval;
   }
 
   componentDidMount() {
@@ -32,11 +32,11 @@ class About extends React.Component {
       isIntroDone: true
     });
 
-    setInterval(this.setLocalTime, 1000);
+    this.localTimeInterval = setInterval(this.setLocalTime.bind(this), 1000);
   }
 
   componentWillUnmount() {
-    clearInterval(this.setLocalTime);
+    clearInterval(this.localTimeInterval);
   }
 
   setLocalTime() {
@@ -46,35 +46,41 @@ class About extends React.Component {
   }
 
   render() {
+    const isSafari = /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
+
     return (
       <TrackDocument formulas={[getDocumentElement, calculateScrollY]}>
         {(documentElement, scrollY) =>
           <div className={`page ${styles.about}`}>
             <Helmet title="Adrien Denat | About" />
-            <Motion
-              style={{
-                scrollY: spring(scrollY, { stiffness: 60, damping: 7 }),
-                wave: this.state.wave ? spring(this.state.wave, { stiffness: 10, damping: 20 }) : 0
-              }}
-            >
-              {currentStyles =>
-                <svg xmlns="http://www.w3.org/2000/svg" version="1.1" className="svg-filters">
-                  <defs>
-                    <filter id="filter-glitch-1">
-                      <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="1" result="warp" />
-                      <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale={Math.min(currentStyles.scrollY / 5, 200)} in="SourceGraphic" in2="warp" />
-                    </filter>
-                  </defs>
-                </svg>
-              }
-            </Motion>
+            {!isSafari &&
+              <Motion
+                style={{
+                  scrollY: spring(scrollY, { stiffness: 60, damping: 7 }),
+                  wave: this.state.wave ? spring(this.state.wave, { stiffness: 10, damping: 20 }) : 0
+                }}
+              >
+                {currentStyles =>
+                  <svg xmlns="http://www.w3.org/2000/svg" version="1.1" className="svg-filters">
+                    <defs>
+                      <filter id="filter-glitch-1">
+                        <feTurbulence type="fractalNoise" baseFrequency="0.02" numOctaves="1" result="warp" />
+                        <feDisplacementMap xChannelSelector="R" yChannelSelector="G" scale={Math.min(currentStyles.scrollY / 5, 200)} in="SourceGraphic" in2="warp" />
+                      </filter>
+                    </defs>
+                  </svg>
+                }
+              </Motion>
+            }
             <div className={styles.hero}>
               <div className={styles.heroInner}>
-                <h1 className={styles.title}>
-                  <span>Oi!</span><br/>
-                  <span>I’M</span><br/>
-                  <span>DEV!</span>
-                </h1>
+                <div className={styles.heroContent}>
+                  <h1 className={styles.title}>
+                    <span>Oi!</span><br/>
+                    <span>I’M</span><br/>
+                    <span>DEV!</span>
+                  </h1>
+                </div>
               </div>
               <picture className={styles.bg}>
                 <source srcSet={bgWebP} type="image/webp" />
@@ -84,6 +90,39 @@ class About extends React.Component {
             </div>
             <div className={styles.container}>
               <div className={styles.inner}>
+                <div>
+                  <h2 className={styles.description}>
+                    Freelance dev based in London,<br />
+                    currently working from Brazil.
+                  </h2>
+                  <p className={styles.shortBio}>
+                    I love building websites and products with a meaning. <br />
+                    Beautiful interfaces is my thing.<br />
+                    I specialise in software engineering but I'm ready to work on a wide variety of project.<br />
+                    I like to share about frontend development on my{' '}
+                    <a
+                      href="https://twitter.com/Grsmto"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      Twitter
+                    </a>{' '}
+                    and sometimes write longer thoughts on{' '}
+                    <a
+                      href="https://tympanus.net/codrops/2016/05/11/distorted-button-effects-with-svg-filters/"
+                      target="blank"
+                      rel="noopener noreferrer"
+                    >
+                      articles
+                    </a>.
+                  </p>
+                  <span className={styles.email}>
+                    Email me:{' '}
+                    <a href="mailto:oi@adriendenat.com">
+                      oi@adriendenat.com
+                    </a>
+                  </span>
+                </div>
                 <ul className={classnames('list-reset', styles.socialLinks)}>
                   <li>
                     <a
@@ -126,37 +165,6 @@ class About extends React.Component {
                     </a>
                   </li>
                 </ul>
-                <h2 className={styles.description}>
-                  Freelance dev based in London,<br />
-                  currently working from Brazil.
-                </h2>
-                <p className={styles.shortBio}>
-                  I love building websites and products with a meaning. <br />
-                  Beautiful interfaces is my thing.<br />
-                  I specialise in software engineering but I'm ready to work on a wide variety of project.<br />
-                  I like to share about frontend development on my{' '}
-                  <a
-                    href="https://twitter.com/Grsmto"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Twitter
-                  </a>{' '}
-                  and sometimes write longer thoughts on{' '}
-                  <a
-                    href="https://tympanus.net/codrops/2016/05/11/distorted-button-effects-with-svg-filters/"
-                    target="blank"
-                    rel="noopener noreferrer"
-                  >
-                    articles
-                  </a>.
-                </p>
-                <span className={styles.email}>
-                  Email me:{' '}
-                  <a href="mailto:oi@adriendenat.com">
-                    oi@adriendenat.com
-                  </a>
-                </span>
               </div>
             </div>
             <div className={styles.containerLight}>
@@ -176,9 +184,9 @@ class About extends React.Component {
               </div>
             </div>
             <div className={styles.container}>
-              <div className={styles.inner}>
+              <div className={styles.localDate}>
                 <span className={styles.localDateLabel}>My local time is: </span>
-                <span className={styles.localDate}>{this.state.brazilTime}<span className={styles.flag}>🇧🇷</span></span>
+                <span className={styles.localDateTime}>{this.state.brazilTime}<span className={styles.flag}>🇧🇷</span></span>
               </div>
             </div>
           </div>
