@@ -73,18 +73,6 @@ export default class Project extends Component {
           [styles.isOnScreen]: isOnScreen
         })}
       >
-        <div className={styles.videoContainer}>
-          <video className={styles.video} ref={r => (this.video = r)} loop>
-            <source
-              src={`${config.s3BucketUrl}/${videos.desktop}.webm`}
-              type="video/webm"
-            />
-            <source
-              src={`${config.s3BucketUrl}/${videos.desktop}.mp4`}
-              type="video/mp4"
-            />
-          </video>
-        </div>
         <Motion
           style={{
             opacityBg: spring(
@@ -159,6 +147,18 @@ export default class Project extends Component {
               </div>
             </div>}
         </Motion>
+        <div className={styles.videoContainer}>
+          <video className={styles.video} ref={r => (this.video = r)} loop muted>
+            <source
+              src={`${config.s3BucketUrl}/${videos.desktop}.webm`}
+              type="video/webm"
+            />
+            <source
+              src={`${config.s3BucketUrl}/${videos.desktop}.mp4`}
+              type="video/mp4"
+            />
+          </video>
+        </div>
       </section>
     );
   }

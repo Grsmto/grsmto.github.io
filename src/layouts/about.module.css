@@ -1,11 +1,13 @@
 @import '../layouts/variables.css';
 
 :root {
-  --titleBaseFontSize: 8rem;
-  --titleBaseLineHeight: 6.7rem;
+  --titleBaseFontSize: 7.5rem;
+  --titleBaseLineHeight: 6.2rem;
 
   --socialLinksBaseFontSize: 2rem;
   --socialLinksBaseLineHeight: 1.8rem;
+
+  --localDatefontSize: 1rem;
 }
 
 .about {
@@ -26,18 +28,24 @@
 }
 
 .heroInner {
+  composes: container from '../layouts/container.css';
   position: relative;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.85);
-  min-height: 90vh;
+  min-height: 97vh;
+}
+
+.heroContent {
+  composes: container-inner from '../layouts/container.css';
   display: flex;
   align-items: center;
+  justify-content: center;
 }
 
 .title {
-  padding-top: 8rem;
-  margin-left: 16vw;
-  margin-bottom: 2rem;
+  padding-bottom: 0;
+  margin-bottom: -2rem;
+  margin-left: -20rem;
   font-weight: 800;
   font-style: italic;
   font-size: var(--titleBaseFontSize);
@@ -63,20 +71,23 @@
     filter: url(#filter-glitch-1);
   }
 
-  @media (--mobile) {
+  @media (--tablet) {
     padding-top: 20vh;
+    padding-bottom: 80vh;
     margin: 0 auto;
   }
 }
 
 .inner {
   composes: container-inner from '../layouts/container.css';
-  padding: 80px 0;
+  display: flex;
 
   @media (--mobile) {
     justify-content: flex-start;
-    padding-top: 20vh;
-    padding-bottom: 100vw;
+  }
+
+  @media (--tablet) {
+    flex-direction: column;
   }
 }
 
@@ -121,9 +132,7 @@
 }
 
 .socialLinks {
-  float: right;
-  margin-top: 12em;
-  margin-left: 4em;
+  margin: 12em 0 0 4em;
 
   & li:nth-child(1) {
     margin-left: .7em;
@@ -135,6 +144,11 @@
 
   & li:nth-child(4) {
     margin-left: -.4em;
+  }
+
+  @media (--mobile) {
+    margin-left: auto;
+    margin-right: auto;
   }
 }
 
@@ -159,23 +173,44 @@
   composes: container-inner from '../layouts/container.css';
   display: grid;
   grid-template-columns: repeat(12, 1fr);
-  padding: 6rem 0;
 }
 
 .bio {
   grid-column: 1/11;
   margin-bottom: 0;
-}
 
-.localDateLabel {
-  font-size: 3rem;
-  @apply --heading;
+  @media (--mobile) {
+    grid-column: full;
+  }
 }
 
 .localDate {
-  margin-left: 1rem;
-  font-size: 5rem;
+  composes: container-inner from '../layouts/container.css';
   @apply --heading;
+  color: white;
+  font-size: var(--localDatefontSize);
+
+  @media (min-width: 320px) and (max-width: 1140px) {
+    font-size: calc(var(--localDatefontSize) + 30 * (100vw - 320px) / (1140 - 320));
+  }
+
+  @media (min-width: 1140px) {
+    font-size: calc(var(--localDatefontSize) + 30px);
+  }
+
+  @media (--mobile) {
+    text-align: center;
+  }
+}
+
+.localDateTime {
+  margin-left: 1rem;
+  font-size: 1.5em;
+
+  @media (--mobile) {
+    display: inline-block;
+    margin-top: 0.5rem;
+  }
 }
 
 .flag {

@@ -9,23 +9,21 @@
 }
 
 @keyframes pageTransition {
-  0% { transform: translate3d(0, 125vh, 0) rotateZ(10deg); }
-  50% { transform: translate3d(0, 0, 0); }
-  100% { transform: translate3d(0, -125vh, 0) rotateZ(-10deg); }
+  0% { transform: translateY(125%) rotateZ(10deg); }
+  50% { transform: translateY(0%) rotateZ(0deg); }
+  100% { transform: translateY(-125%) rotateZ(-10deg); }
 }
 
 @keyframes appearLeft {
   0% { transform: translate3d(2.5em, 1.5em, 0) rotateZ(10deg); opacity: 0; }
-  28% { transform: translate3d(2.5em, 0, 0); }
-  38% { transform: translate3d(2.5em, 0, 0); opacity: 1; }
-  54% { transform: translate3d(0, 0, 0); }
+  65% { transform: translate3d(2.5em, 0, 0) rotateZ(0deg); opacity: 1; }
+  100% { transform: translate3d(0, 0, 0) rotateZ(0deg); }
 }
 
 @keyframes appearRight {
   0% { transform: translate3d(-2.5em, 1.5em, 0) rotateZ(10deg); opacity: 0; }
-  28% { transform: translate3d(-2.5em, 0, 0); }
-  38% { transform: translate3d(-2.5em, 0, 0); opacity: 1; }
-  54% { transform: translate3d(0, 0, 0); }
+  65% { transform: translate3d(-2.5em, 0, 0); opacity: 1; }
+  100% { transform: translate3d(0, 0, 0); }
 }
 
 @keyframes appearLeftSm {
