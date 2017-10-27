@@ -38,7 +38,7 @@ class PageTransition extends React.Component {
             key={location.pathname}
             classNames={{
               enter: styles.enter,
-              exit: 'lol'
+              exit: 'exit'
             }}
             timeout={{ enter: 600, exit: 1000 }}
             onEnter={() => {

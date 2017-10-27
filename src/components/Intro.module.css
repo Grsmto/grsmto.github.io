@@ -43,7 +43,7 @@
 }
 
 .name {
-  animation: appearLeft 4s 1s var(--ease-in-out-quint) both;
+  animation: appearLeft 2s 1s var(--ease-in-out-quint) both;
 
   @media (--mobile) {
     animation-name: appearLeftSm;
@@ -51,7 +51,7 @@
 }
 
 .surname {
-  animation: appearRight 4s 1.1s var(--ease-in-out-quint) both;
+  animation: appearRight 2s 1.1s var(--ease-in-out-quint) both;
 
   @media (--mobile) {
     animation-name: appearRightSm;
