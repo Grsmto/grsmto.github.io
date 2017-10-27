@@ -4,12 +4,6 @@ import Link from 'gatsby-link';
 import styles from './Nav.module.css';
 
 class Nav extends React.Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      freq: 0
-    };
-  }
   render() {
     return (
       <nav className={styles.nav}>

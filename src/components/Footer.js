@@ -10,7 +10,7 @@ import SocialButtons from './SocialButtons';
 const Footer = () =>
   <footer className={styles.container}>
     <div className={styles.inner}>
-      <h1 className={styles.title}>Any cool project you want to talk about?</h1>
+      <h2 className={styles.title}>Any cool project you want to talk about?</h2>
       <p>
         I’m always looking for new interfaces to build <br />
         and challenging projects to work on.<br />
