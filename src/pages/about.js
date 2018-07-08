@@ -102,7 +102,7 @@ class About extends React.Component {
                     I specialise in software engineering but I'm ready to work on a wide variety of project.<br />
                     I like to share about frontend development on my{' '}
                     <a
-                      href="https://twitter.com/Grsmto"
+                      href="https://twitter.com/adriendenat"
                       target="_blank"
                       rel="noopener noreferrer"
                     >

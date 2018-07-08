@@ -4,8 +4,8 @@ description: "Personalised tees editor"
 videoDesktop: "everpress"
 videoMobile: "everpress"
 url: "https://everpress.com/"
-tech: "Backbone, Marionette"
-year: 2015
+tech: "React, Redux, Node, Webpack"
+year: 2018
 ---
 
 Using Everpress, artists can sell clothing merchandise to fans anywhere in the world.
