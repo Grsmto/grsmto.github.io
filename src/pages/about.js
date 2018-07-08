@@ -148,7 +148,7 @@ class About extends React.Component {
                   <li>
                     <a
                       className={styles.socialLink}
-                      href="https://twitter.com/Grsmto"
+                      href="https://twitter.com/adriendenat"
                       target="_blank"
                       rel="noopener noreferrer"
                     >
