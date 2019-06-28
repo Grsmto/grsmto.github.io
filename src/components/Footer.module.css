@@ -1,10 +1,10 @@
-@import '../layouts/variables.css';
+@import "../layouts/variables.css";
 
 .container {
   position: sticky;
   bottom: 0;
   top: auto;
-  composes: container from '../layouts/container.css';
+  composes: container from "../layouts/container.css";
   left: 0;
   right: 0;
   z-index: var(--z-index-footer);
@@ -13,7 +13,7 @@
 }
 
 .inner {
-  composes: container-inner from '../layouts/container.css';
+  composes: containerInner from "../layouts/container.css";
   padding: 9rem 0;
 }
 

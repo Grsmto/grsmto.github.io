@@ -1,4 +1,4 @@
-@import '../layouts/variables.css';
+@import "../layouts/variables.css";
 
 :root {
   --titleBaseFontSize: 7.5rem;
@@ -15,7 +15,7 @@
 }
 
 .container {
-  composes: container from '../layouts/container.css';
+  composes: container from "../layouts/container.css";
 }
 
 .containerLight {
@@ -28,7 +28,7 @@
 }
 
 .heroInner {
-  composes: container from '../layouts/container.css';
+  composes: container from "../layouts/container.css";
   position: relative;
   z-index: 1;
   background-color: rgba(0, 0, 0, 0.85);
@@ -36,7 +36,7 @@
 }
 
 .heroContent {
-  composes: container-inner from '../layouts/container.css';
+  composes: containerInner from "../layouts/container.css";
   display: flex;
   align-items: center;
   justify-content: center;
@@ -52,8 +52,12 @@
   line-height: var(--titleBaseLineHeight);
 
   @media (min-width: 320px) and (max-width: 960px) {
-    font-size: calc(var(--titleBaseFontSize) + 100 * (100vw - 320px) / (960 - 320));
-    line-height: calc(var(--titleBaseLineHeight) + 85 * (100vw - 320px) / (960 - 320));
+    font-size: calc(
+      var(--titleBaseFontSize) + 100 * (100vw - 320px) / (960 - 320)
+    );
+    line-height: calc(
+      var(--titleBaseLineHeight) + 85 * (100vw - 320px) / (960 - 320)
+    );
   }
 
   @media (min-width: 960px) {
@@ -79,7 +83,7 @@
 }
 
 .inner {
-  composes: container-inner from '../layouts/container.css';
+  composes: containerInner from "../layouts/container.css";
   display: flex;
 
   @media (--mobile) {
@@ -92,7 +96,7 @@
 }
 
 .description {
-  composes: subtitle from '../layouts/index.css';
+  composes: subtitle from "../layouts/index.css";
   margin-bottom: 3rem;
 }
 
@@ -115,7 +119,7 @@
   display: flex;
   align-items: flex-end;
   justify-content: flex-end;
-  background-color: #F0F0F2;
+  background-color: #f0f0f2;
 }
 
 .bgImg {
@@ -135,15 +139,15 @@
   margin: 12em 0 0 4em;
 
   & li:nth-child(1) {
-    margin-left: .7em;
+    margin-left: 0.7em;
   }
 
   & li:nth-child(2) {
-    margin-left: .3em;
+    margin-left: 0.3em;
   }
 
   & li:nth-child(4) {
-    margin-left: -.4em;
+    margin-left: -0.4em;
   }
 
   @media (--mobile) {
@@ -159,8 +163,12 @@
   line-height: var(--socialLinksBaseLineHeight);
 
   @media (min-width: 320px) and (max-width: 960px) {
-    font-size: calc(var(--socialLinksBaseFontSize) + 60 * (100vw - 320px) / (960 - 320));
-    line-height: calc(var(--socialLinksBaseLineHeight) + 55 * (100vw - 320px) / (960 - 320));
+    font-size: calc(
+      var(--socialLinksBaseFontSize) + 60 * (100vw - 320px) / (960 - 320)
+    );
+    line-height: calc(
+      var(--socialLinksBaseLineHeight) + 55 * (100vw - 320px) / (960 - 320)
+    );
   }
 
   @media (min-width: 960px) {
@@ -170,7 +178,7 @@
 }
 
 .bioContainer {
-  composes: container-inner from '../layouts/container.css';
+  composes: containerInner from "../layouts/container.css";
   display: grid;
   grid-template-columns: repeat(12, 1fr);
 }
@@ -185,13 +193,15 @@
 }
 
 .localDate {
-  composes: container-inner from '../layouts/container.css';
+  composes: containerInner from "../layouts/container.css";
   @apply --heading;
   color: white;
   font-size: var(--localDatefontSize);
 
   @media (min-width: 320px) and (max-width: 1140px) {
-    font-size: calc(var(--localDatefontSize) + 30 * (100vw - 320px) / (1140 - 320));
+    font-size: calc(
+      var(--localDatefontSize) + 30 * (100vw - 320px) / (1140 - 320)
+    );
   }
 
   @media (min-width: 1140px) {

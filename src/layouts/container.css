@@ -1,4 +1,4 @@
-@import './variables.css';
+@import "./variables.css";
 
 .container {
   max-width: var(--max-width);
@@ -18,15 +18,19 @@
   }
 }
 
-@supports(display: grid) {
+@supports (display: grid) {
   .container {
     display: grid;
-    grid-template-columns: [full-start] minmax(2rem, 1fr) [main-start] minmax(0, var(--max-width)) [main-end] minmax(2rem, 1fr) [full-end];
+    grid-template-columns:
+      [full-start] minmax(2rem, 1fr) [main-start] minmax(0, var(--max-width))
+      [main-end] minmax(2rem, 1fr) [full-end];
     max-width: initial;
     padding: 0;
 
     @media (--mobile) {
-      grid-template-columns: [full-start] minmax(1rem, 1fr) [main-start] minmax(0, var(--max-width)) [main-end] minmax(1rem, 1fr) [full-end];
+      grid-template-columns:
+        [full-start] minmax(1rem, 1fr) [main-start] minmax(0, var(--max-width))
+        [main-end] minmax(1rem, 1fr) [full-end];
     }
   }
 

@@ -1,7 +1,7 @@
-import React from 'react';
-import Link from 'gatsby-link';
+import React from "react";
+import { Link } from "gatsby";
 
-import styles from './Nav.module.css';
+import styles from "./Nav.module.css";
 
 class Nav extends React.Component {
   render() {
@@ -13,7 +13,6 @@ class Nav extends React.Component {
               className={styles.link}
               activeClassName={styles.active}
               to="/"
-              exact
             >
               projects
             </Link>
