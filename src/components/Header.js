@@ -1,33 +1,28 @@
-import React from 'react';
-import classnames from 'classnames';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Link from 'gatsby-link';
+import React from "react";
+import classnames from "classnames";
+import { Link } from "gatsby";
+import styles from "./Header.module.css";
 
-import styles from './Header.module.css';
+import Nav from "./Nav";
+import Logo from "./Logo";
 
-import Nav from './Nav';
-import Logo from './Logo';
-
-const Header = ({ isIntroDone }) =>
+const Header = ({ isIntroDone }) => (
   <header
     className={classnames(styles.header, {
-      [styles.visible]: isIntroDone
+      [styles.visible]: isIntroDone,
     })}
   >
     <div className={styles.headerInner}>
       <div>
-        {isIntroDone &&
-          <Link to="/" exact>
+        {isIntroDone && (
+          <Link to="/">
             <Logo className={styles.logo} />
-          </Link>}
+          </Link>
+        )}
       </div>
       <Nav />
     </div>
-  </header>;
+  </header>
+);
 
-const mapStateToProps = ({ isIntroDone }) => {
-  return { isIntroDone };
-};
-
-export default withRouter(connect(mapStateToProps)(Header));
+export default Header;

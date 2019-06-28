@@ -1,57 +1,50 @@
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { TrackDocument } from 'react-track';
+import React, { useContext, useCallback } from "react";
+import { graphql } from "gatsby";
+import { connect } from "react-redux";
+import { TrackDocument } from "react-track";
 import {
   getDocumentElement,
   topTop,
-  topBottom
-} from 'react-track/tracking-formulas';
+  topBottom,
+} from "react-track/tracking-formulas";
 
-import mutateStore from '../state/mutateStore';
+import { AppContext } from "../layouts";
 
-import Intro from '../components/Intro';
-import Footer from '../components/Footer';
-import Projects from '../components/Projects';
+import Intro from "../components/Intro";
+import Footer from "../components/Footer";
+import Projects from "../components/Projects";
 
-class IndexPage extends Component {
-  onIntroEnd() {
-    this.props.mutateStore({
-      isIntroDone: true
-    });
-  }
+const IndexPage = ({ data }) => {
+  const { isIntroDone, setIntroDone } = useContext(AppContext);
+  const hideScrollStyle = {
+    maxHeight: "100vh",
+    overflow: "hidden",
+  };
 
-  render() {
-    const { data, isIntroDone } = this.props;
-    const hideScrollStyle = {
-      maxHeight: '100vh',
-      overflow: 'hidden'
-    };
+  const onIntroEnd = useCallback(() => {
+    setIntroDone(true);
+  }, []);
 
-    return (
-      <TrackDocument formulas={[getDocumentElement, topTop, topBottom]}>
-        {(documentElement, topTop, topBottom) =>
-          <div className="page" style={!isIntroDone ? hideScrollStyle : null}>
-            <Intro
-              onEnd={this.onIntroEnd.bind(this)}
-              isVisible={!isIntroDone}
-            />
-            <Projects
-              data={data.allMarkdownRemark.edges}
-              documentElement={documentElement}
-              topTop={topTop}
-              topBottom={topBottom}
-              isVisible={isIntroDone}
-            />
-            <Footer />
-          </div>}
-      </TrackDocument>
-    );
-  }
-}
+  return (
+    <TrackDocument formulas={[getDocumentElement, topTop, topBottom]}>
+      {(documentElement, topTop, topBottom) => (
+        <div className="page" style={!isIntroDone ? hideScrollStyle : null}>
+          <Intro onEnd={onIntroEnd} isVisible={!isIntroDone} />
+          <Projects
+            data={data.allMarkdownRemark.edges}
+            documentElement={documentElement}
+            topTop={topTop}
+            topBottom={topBottom}
+            isVisible={isIntroDone}
+          />
+          <Footer />
+        </div>
+      )}
+    </TrackDocument>
+  );
+};
 
-export default connect(({ isIntroDone }) => ({ isIntroDone }), { mutateStore })(
-  IndexPage
-);
+export default IndexPage;
 
 export const query = graphql`
   query IndexQuery {
