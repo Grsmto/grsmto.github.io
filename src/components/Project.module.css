@@ -1,9 +1,9 @@
-@import '../layouts/variables.css';
-@import '../layouts/animations.module.css';
+@import "../layouts/variables.css";
+@import "../layouts/animations.module.css";
 
 .project {
   position: relative;
-  composes: container from '../layouts/container.css';
+  composes: container from "../layouts/container.css";
 }
 
 .videoContainer {
@@ -17,7 +17,7 @@
   position: relative;
   z-index: 1;
   grid-column: full;
-  composes: container from '../layouts/container.css';
+  composes: container from "../layouts/container.css";
   width: 100%;
   height: 100%;
 }
@@ -25,13 +25,13 @@
 .projectInfosInner {
   position: relative;
   grid-column: main;
-  display: flex;
+  display: grid;
+  composes: grid from "../layouts/index.css";
   flex-direction: column;
   z-index: 1;
-  max-width: 900px;
 }
 
-@supports(position: sticky) {
+@supports (position: sticky) {
   .project {
     height: 350vh;
   }
@@ -69,7 +69,8 @@
 }
 
 .title {
-  composes: title from '../layouts/index.css';
+  composes: colFull from "../layouts/index.css";
+  composes: title from "../layouts/index.css";
   margin-top: 55vh;
   margin-left: -0.08em;
 
@@ -93,7 +94,8 @@
 }
 
 .description {
-  composes: subtitle from '../layouts/index.css';
+  composes: subtitle from "../layouts/index.css";
+  composes: colFull from "../layouts/index.css";
   display: inline-block;
   will-change: opacity, transform;
   margin-top: 1em;
@@ -108,6 +110,10 @@
   }
 }
 
+.contentContainer {
+  composes: colCentered from "../layouts/index.css";
+}
+
 .content {
   will-change: opacity, transform;
   margin-top: 3em;
@@ -115,6 +121,10 @@
 
   @media (--mobile) {
     margin-top: 6em;
+  }
+
+  & blockquote {
+    font-size: 1.75rem;
   }
 }
 

@@ -31,14 +31,14 @@ const AboutPage = () => {
     return () => {
       clearInterval(localTimeInterval);
     };
-  }, []);
+  }, [setLocalTime]);
   const setLocalTime = useCallback(() => {
     setTime(format(mzone.tz(new Date(), "America/Sao_Paulo"), "HH:mm:ss"));
   });
 
   useEffect(() => {
     context.setIntroDone(true);
-  }, []);
+  }, [context]);
 
   return (
     <TrackDocument formulas={[getDocumentElement, calculateScrollY]}>
@@ -93,7 +93,7 @@ const AboutPage = () => {
             <picture className={styles.bg}>
               <source srcSet={bgWebP} type="image/webp" />
               <source srcSet={bgJpg} type="image/jpeg" />
-              <img className={styles.bgImg} src={bgJpg} alt="Me" />
+              <img className={styles.bgImg} src={bgJpg} width={450} alt="Me" />
             </picture>
           </div>
           <div className={styles.container}>
@@ -105,9 +105,9 @@ const AboutPage = () => {
                   currently working from Brazil.
                 </h2>
                 <p className={styles.shortBio}>
-                  I love building websites and products with a meaning. 
+                  I love building websites and products with a meaning.
                   <br />
-                  Beautiful interfaces is my thing.
+                  Beautiful and functional interfaces is my thing.
                   <br />
                   I specialise in software engineering but I'm ready to work on
                   a wide variety of project.
@@ -141,18 +141,9 @@ const AboutPage = () => {
                     href="https://github.com/Grsmto/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-name="Github"
                   >
                     Github
-                  </a>
-                </li>
-                <li>
-                  <a
-                    className={styles.socialLink}
-                    href="https://codepen.io/Grsmto/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    Codepen
                   </a>
                 </li>
                 <li>
@@ -161,8 +152,20 @@ const AboutPage = () => {
                     href="https://twitter.com/adriendenat"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-name="Twitter"
                   >
                     Twitter
+                  </a>
+                </li>
+                <li>
+                  <a
+                    className={styles.socialLink}
+                    href="https://codepen.io/Grsmto/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    data-name="Codepen"
+                  >
+                    Codepen
                   </a>
                 </li>
                 <li>
@@ -171,6 +174,7 @@ const AboutPage = () => {
                     href="https://www.linkedin.com/in/adriendenat/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    data-name="LinkedIn"
                   >
                     LinkedIn
                   </a>

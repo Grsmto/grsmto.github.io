@@ -105,34 +105,19 @@
 }
 
 .email {
+  font-family: var(--font-family-headings);
+  font-size: 1.4rem;
   text-transform: uppercase;
   font-weight: 800;
   font-style: italic;
 }
 
 .bg {
-  position: absolute;
-  right: 0;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  display: flex;
-  align-items: flex-end;
-  justify-content: flex-end;
-  background-color: #f0f0f2;
 }
 
 .bgImg {
-  position: sticky;
-  bottom: 0;
-  top: auto;
-  display: block;
-  max-width: 100%;
-  max-height: 100%;
   height: auto;
-  width: auto;
-  object-fit: contain;
-  object-position: bottom right;
+  transform: skewX(-10deg);
 }
 
 .socialLinks {
@@ -174,6 +159,17 @@
   @media (min-width: 960px) {
     font-size: calc(var(--socialLinksBaseFontSize) + 60px);
     line-height: calc(var(--socialLinksBaseLineHeight) + 55px);
+  }
+
+  &:before {
+    position: absolute;
+    content: attr(data-name);
+    -webkit-text-fill-color: transparent;
+    text-fill-color: transparent;
+    -webkit-text-stroke: 1px white;
+    text-stroke: 1px white;
+    margin-top: -0.15em;
+    margin-left: -0.15em;
   }
 }
 

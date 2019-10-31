@@ -1,6 +1,5 @@
 import React, { useContext, useCallback } from "react";
 import { graphql } from "gatsby";
-import { connect } from "react-redux";
 import { TrackDocument } from "react-track";
 import {
   getDocumentElement,
@@ -23,7 +22,7 @@ const IndexPage = ({ data }) => {
 
   const onIntroEnd = useCallback(() => {
     setIntroDone(true);
-  }, []);
+  }, [setIntroDone]);
 
   return (
     <TrackDocument formulas={[getDocumentElement, topTop, topBottom]}>

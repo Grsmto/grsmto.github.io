@@ -1,30 +1,41 @@
 import React from "react";
 import { Link } from "gatsby";
+import { Heading, Text } from "rebass";
 
-import styles from "./Footer.module.css";
+import Container from "./Container";
+import ContainerInner from "./ContainerInner";
 
 import SocialButtons from "./SocialButtons";
 
 const Footer = () => (
-  <footer className={styles.container}>
-    <div className={styles.inner}>
-      <h2 className={styles.title}>Any cool project you want to talk about?</h2>
-      <p>
-        I’m always looking for new interfaces to build <br />
-        and challenging projects to work on.
+  <Container
+    as="footer"
+    sx={{
+      p: "9rem 0",
+    }}
+  >
+    <ContainerInner>
+      <Heading as="h2" sx={{ mb: 5, fontSize: 7 }}>
+        Any cool project you want to talk about?
+      </Heading>
+      <Heading as="p" sx={{ fontSize: 7 }}>
+        I’m always looking for new interfaces to build and challenging projects
+        to work on.
         <br />
         <a href="mailto:oi@adriendenat.com">Email me!</a>
-      </p>
-      <span className={styles.learnMore}>
-        or learn more{" "}
-        <Link to="/about" className={styles.learnMoreCta}>
-          about me
-        </Link>
-        .
-      </span>
+      </Heading>
+      <Text
+        sx={{
+          fontSize: 3,
+          fontWeight: "heading",
+          color: "red",
+        }}
+      >
+        <Link to="/about">or learn more about me.</Link>
+      </Text>
       <SocialButtons />
-    </div>
-  </footer>
+    </ContainerInner>
+  </Container>
 );
 
 export default Footer;
