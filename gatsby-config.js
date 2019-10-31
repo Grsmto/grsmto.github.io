@@ -5,6 +5,7 @@ module.exports = {
   plugins: [
     `gatsby-plugin-layout`,
     `gatsby-plugin-postcss`,
+    `gatsby-plugin-emotion`,
     `gatsby-plugin-react-helmet`,
     `gatsby-transformer-remark`,
     {
