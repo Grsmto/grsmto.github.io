@@ -1,6 +1,9 @@
 import React, { useState, useEffect, useCallback, useContext } from "react";
 import { Helmet } from "react-helmet";
-import classnames from "classnames";
+import { graphql } from "gatsby";
+import Img from "gatsby-image";
+import { Global, css } from "@emotion/core";
+import { Box, Heading, Flex } from "rebass";
 import { format } from "date-fns";
 import { Motion, spring } from "react-motion";
 import { TrackDocument } from "react-track";
@@ -8,22 +11,36 @@ import {
   getDocumentElement,
   calculateScrollY,
 } from "react-track/tracking-formulas";
+import { fluidRange, hideVisually } from "polished";
 
 import { AppContext } from "../layouts";
 import mzone from "../utils/timezone";
 
-import styles from "../layouts/about.module.css";
+import Container from "../components/Container";
+import GridRow from "../components/GridRow";
 
-import bgJpg from "../assets/images/me.jpg";
-import bgWebP from "../assets/images/me.webp";
+const socialLinkStyle = {
+  textTransform: "uppercase",
+  lineHeight: 1.15,
+  ...fluidRange({
+    prop: "font-size",
+    fromSize: "40px",
+    toSize: "100px",
+  }),
+};
 
-const AboutPage = () => {
+const isSafari =
+  typeof navigator !== "undefined"
+    ? /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
+    : false;
+
+const AboutPage = ({ data }) => {
   const [time, setTime] = useState();
-  const isSafari =
-    typeof navigator !== "undefined"
-      ? /^((?!chrome|android).)*safari/i.test(navigator.userAgent)
-      : false;
   const context = useContext(AppContext);
+
+  const setLocalTime = useCallback(() => {
+    setTime(format(mzone.tz(new Date(), "America/Sao_Paulo"), "HH:mm:ss"));
+  }, []);
 
   useEffect(() => {
     const localTimeInterval = setInterval(setLocalTime, 1000);
@@ -32,9 +49,6 @@ const AboutPage = () => {
       clearInterval(localTimeInterval);
     };
   }, [setLocalTime]);
-  const setLocalTime = useCallback(() => {
-    setTime(format(mzone.tz(new Date(), "America/Sao_Paulo"), "HH:mm:ss"));
-  });
 
   useEffect(() => {
     context.setIntroDone(true);
@@ -43,7 +57,7 @@ const AboutPage = () => {
   return (
     <TrackDocument formulas={[getDocumentElement, calculateScrollY]}>
       {(documentElement, scrollY) => (
-        <div className={`page ${styles.about}`}>
+        <Box sx={{ position: "relative" }}>
           <Helmet title="Adrien Denat | About" />
           {!isSafari && (
             <Motion
@@ -52,10 +66,13 @@ const AboutPage = () => {
               }}
             >
               {currentStyles => (
-                <svg
+                <Box
+                  as="svg"
                   xmlns="http://www.w3.org/2000/svg"
                   version="1.1"
-                  className="svg-filters"
+                  sx={{
+                    ...hideVisually(),
+                  }}
                 >
                   <defs>
                     <filter id="filter-glitch-1">
@@ -74,43 +91,105 @@ const AboutPage = () => {
                       />
                     </filter>
                   </defs>
-                </svg>
+                </Box>
               )}
             </Motion>
           )}
-          <div className={styles.hero}>
-            <div className={styles.heroInner}>
-              <div className={styles.heroContent}>
-                <h1 className={styles.title}>
-                  <span>Oi!</span>
+          <Container
+            sx={{
+              position: "relative",
+              zIndex: 1,
+              mt: 6,
+            }}
+          >
+            <GridRow>
+              <GridRow.Col gridColumn="2 / -2" gridRow={1} sx={{ zIndex: 1 }}>
+                <Heading
+                  as="h1"
+                  sx={{
+                    display: "flex",
+                    flexDirection: "column",
+                    fontStyle: "italic",
+                    lineHeight: 1,
+
+                    "& span:nth-of-type(2)": {
+                      filter: "url(#filter-glitch-1)",
+                    },
+                  }}
+                >
+                  <Box
+                    as="span"
+                    sx={{
+                      ...fluidRange({
+                        prop: "font-size",
+                        fromSize: "150px",
+                        toSize: "400px",
+                      }),
+                      ml: -3,
+                    }}
+                  >
+                    Oi!
+                  </Box>
                   <br />
-                  <span>I’M</span>
+                  <Box
+                    as="span"
+                    sx={{
+                      alignSelf: "center",
+                      textTransform: "uppercase",
+                      ...fluidRange({
+                        prop: "font-size",
+                        fromSize: "40px",
+                        toSize: "150px",
+                      }),
+                    }}
+                  >
+                    Let's dev!
+                  </Box>
+                </Heading>
+              </GridRow.Col>
+              <GridRow.Col
+                gridColumn="6 / -1"
+                gridRow={1}
+                sx={{ position: "relative" }}
+              >
+                <Box
+                  sx={{
+                    position: "absolute",
+                    top: ["40px", "5vw"],
+                    right: 0,
+                  }}
+                >
+                  <Img
+                    fluid={data.file.childImageSharp.fluid}
+                    style={{
+                      width: 400,
+                      maxWidth: "40vw",
+                      transform: "skew(-5deg)",
+                    }}
+                  />
+                </Box>
+              </GridRow.Col>
+            </GridRow>
+          </Container>
+          <Container sx={{ mt: 7 }}>
+            <GridRow>
+              <GridRow.Col gridColumn={["1 / -1", "3 / -3", "4 / -4"]}>
+                <Heading
+                  as="h2"
+                  variant="text.headings.h2"
+                  sx={{ mb: 6, color: "red" }}
+                >
+                  Freelance developer based in London,
                   <br />
-                  <span>DEV!</span>
-                </h1>
-              </div>
-            </div>
-            <picture className={styles.bg}>
-              <source srcSet={bgWebP} type="image/webp" />
-              <source srcSet={bgJpg} type="image/jpeg" />
-              <img className={styles.bgImg} src={bgJpg} width={450} alt="Me" />
-            </picture>
-          </div>
-          <div className={styles.container}>
-            <div className={styles.inner}>
-              <div>
-                <h2 className={styles.description}>
-                  Freelance dev based in London,
-                  <br />
-                  currently working from Brazil.
-                </h2>
-                <p className={styles.shortBio}>
+                  currently working from Brazil. 🇧🇷
+                </Heading>
+                <p>
                   I love building websites and products with a meaning.
                   <br />
                   Beautiful and functional interfaces is my thing.
                   <br />
-                  I specialise in software engineering but I'm ready to work on
-                  a wide variety of project.
+                  I specialise in frontend software engineering but I'm ready to
+                  work on a wide variety of project.
                   <br />I like to share about frontend development on my{" "}
                   <a
                     href="https://twitter.com/adriendenat"
@@ -129,114 +208,142 @@ const AboutPage = () => {
                   </a>
                   .
                 </p>
-                <span className={styles.email}>
-                  Email me:{" "}
+                <Heading
+                  as="span"
+                  variant="text.headings.h3"
+                  sx={{
+                    display: "block",
+                    fontSize: 5,
+                    fontStyle: "italic",
+                    my: 6,
+                  }}
+                >
+                  <Box as="span" sx={{ color: "red" }}>
+                    Email me:
+                  </Box>{" "}
                   <a href="mailto:oi@adriendenat.com">oi@adriendenat.com</a>
-                </span>
-              </div>
-              <ul className={classnames("list-reset", styles.socialLinks)}>
-                <li>
+                </Heading>
+                <p>
+                  Within 7 years of experience in frontend development, I've
+                  been working on{" "}
                   <a
-                    className={styles.socialLink}
-                    href="https://github.com/Grsmto/"
+                    href="http://thefwa.com/cases/creaktif"
                     target="_blank"
                     rel="noopener noreferrer"
-                    data-name="Github"
                   >
-                    Github
-                  </a>
-                </li>
-                <li>
+                    awarded
+                  </a>{" "}
                   <a
-                    className={styles.socialLink}
-                    href="https://twitter.com/adriendenat"
+                    href="http://www.awwwards.com/web-design-awards/neverbland-2-0"
                     target="_blank"
                     rel="noopener noreferrer"
-                    data-name="Twitter"
                   >
-                    Twitter
-                  </a>
-                </li>
-                <li>
+                    marketing
+                  </a>{" "}
                   <a
-                    className={styles.socialLink}
-                    href="https://codepen.io/Grsmto/"
+                    href="http://www.awwwards.com/web-design-awards/savse-smoothies"
                     target="_blank"
                     rel="noopener noreferrer"
-                    data-name="Codepen"
                   >
-                    Codepen
+                    websites
                   </a>
-                </li>
-                <li>
-                  <a
-                    className={styles.socialLink}
-                    href="https://www.linkedin.com/in/adriendenat/"
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    data-name="LinkedIn"
-                  >
-                    LinkedIn
-                  </a>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div className={styles.containerLight}>
-            <div className={styles.bioContainer}>
-              <p className={styles.bio}>
-                Within 7 years of experience in frontend development, I've been
-                working on{" "}
-                <a
-                  href="http://thefwa.com/cases/creaktif"
-                  target="_blank"
-                  rel="noopener noreferrer"
+                  , products and mobile applications. I recently left my
+                  position of lead frontend developer at NEVERBLAND to start
+                  working as a freelancer.
+                  <br />
+                  I now have about 5 projects in production using React, Redux
+                  and also GraphQL, but I'm open to other frameworks too! I'm
+                  always looking for the fastest, cleanest and most efficient
+                  way to build user interfaces.
+                  <br />
+                  Lately I have been focusing on mobile applications using React
+                  Native and Java on Android.
+                  <br />I love remote work and I would make you change your mind
+                  about how efficient it can be!
+                </p>
+              </GridRow.Col>
+            </GridRow>
+            <GridRow sx={{ my: 7 }}>
+              <GridRow.Col gridColumn={["span 6 / 12"]}>
+                <Box
+                  as="ul"
+                  sx={{
+                    margin: "12em 0 0 4em",
+                    fontStyle: "italic",
+                  }}
                 >
-                  awarded
-                </a>{" "}
-                <a
-                  href="http://www.awwwards.com/web-design-awards/neverbland-2-0"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  marketing
-                </a>{" "}
-                <a
-                  href="http://www.awwwards.com/web-design-awards/savse-smoothies"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                >
-                  websites
-                </a>
-                , products and mobile applications. I recently left my position
-                of lead frontend developer at NEVERBLAND to start working as a
-                freelancer.
-                <br />
-                I now have about 5 projects in production using React, Redux and
-                also GraphQL, but I'm open to other frameworks too! I'm always
-                looking for the fastest, cleanest and most efficient way to
-                build user interfaces.
-                <br />
-                Lately I have been focusing on mobile applications using React
-                Native and Java on Android.
-                <br />I love remote work and I would make you change your mind
-                about how efficient it can be!
-              </p>
-            </div>
-          </div>
-          <div className={styles.container}>
-            <div className={styles.localDate}>
-              <span className={styles.localDateLabel}>My local time is: </span>
-              <span className={styles.localDateTime}>
-                {time}
-                <span className={styles.flag}>🇧🇷</span>
-              </span>
-            </div>
-          </div>
-        </div>
+                  <li>
+                    <Box
+                      as="a"
+                      sx={socialLinkStyle}
+                      variant="text.headings.h1"
+                      href="https://github.com/Grsmto/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-name="Github"
+                    >
+                      Github
+                    </Box>
+                  </li>
+                  <li>
+                    <Box
+                      as="a"
+                      sx={socialLinkStyle}
+                      variant="text.headings.h1"
+                      href="https://twitter.com/adriendenat"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-name="Twitter"
+                    >
+                      Twitter
+                    </Box>
+                  </li>
+                  <li>
+                    <Box
+                      as="a"
+                      sx={socialLinkStyle}
+                      variant="text.headings.h1"
+                      href="https://codepen.io/Grsmto/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-name="Codepen"
+                    >
+                      Codepen
+                    </Box>
+                  </li>
+                  <li>
+                    <Box
+                      as="a"
+                      sx={socialLinkStyle}
+                      variant="text.headings.h1"
+                      href="https://www.linkedin.com/in/adriendenat/"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      data-name="LinkedIn"
+                    >
+                      LinkedIn
+                    </Box>
+                  </li>
+                </Box>
+              </GridRow.Col>
+            </GridRow>
+          </Container>
+        </Box>
       )}
     </TrackDocument>
   );
 };
 
 export default AboutPage;
+
+export const query = graphql`
+  query AboutQuery {
+    file(name: { eq: "me" }) {
+      childImageSharp {
+        fluid(maxWidth: 400, maxHeight: 400, quality: 80) {
+          ...GatsbyImageSharpFluid
+        }
+      }
+    }
+  }
+`;
