@@ -1,7 +1,5 @@
 import { createGlobalStyle } from "@xstyled/emotion";
 
-import theme from "./theme";
-
 const GlobalStyles = createGlobalStyle({
   html: {
     WebkitTapHighlightColor: "rgba(0, 0, 0, 0)",
@@ -18,9 +16,6 @@ const GlobalStyles = createGlobalStyle({
     backgroundColor: "black",
     overflowY: "scroll",
     minHeight: "100vh",
-    [`@media(max-width: ${theme.breakpoints.sm}px)`]: {
-      fontSize: "1.2rem",
-    },
   },
   "::selection": {
     backgroundColor: "rgba(255, 241, 124, 0.99)",
@@ -28,9 +23,11 @@ const GlobalStyles = createGlobalStyle({
     opacity: 1,
     textShadow: "none",
   },
+  /* Remove list styles on ul, ol elements with a class attribute */
   /* Remove default padding */
   "ul[class], ol[class]": {
     padding: 0,
+    listStyle: "none",
   },
   /* Remove default margin */
   [`
@@ -46,8 +43,12 @@ const GlobalStyles = createGlobalStyle({
     figcaption,
     blockquote,
     dl,
-    dd`]: {
+    dd
+  `]: {
     margin: 0,
+  },
+  blockquote: {
+    fontStyle: "italic",
   },
   "b, strong": {
     fontWeight: "bold",
@@ -61,7 +62,7 @@ const GlobalStyles = createGlobalStyle({
   "button, a": {
     transition: "all 150ms",
   },
-  img: {
+  "img, video": {
     maxWidth: "100%",
   },
   "[hidden]": {

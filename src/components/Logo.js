@@ -13,7 +13,7 @@ const Logo = ({ sx, ...props }) => (
   <Heading
     sx={{
       textAlign: "center",
-      fontSize: 3,
+      fontSize: ["body", "body"],
       fontStyle: "italic",
       ...sx,
     }}

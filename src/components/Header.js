@@ -6,7 +6,7 @@ import Container from "./Container";
 import Nav from "./Nav";
 import Logo from "./Logo";
 
-const Header = ({ isIntroDone }) => (
+const Header = ({ isIntroDone, sx }) => (
   <Container
     as="header"
     sx={{
@@ -16,11 +16,9 @@ const Header = ({ isIntroDone }) => (
       opacity: 0,
       visibility: "hidden",
       transition: "all 300ms",
-
-      "@supports (display: grid)": {
-        left: 0,
-        right: 0,
-      },
+      top: 0,
+      left: 0,
+      right: 0,
 
       ...(isIntroDone && {
         opacity: 1,
@@ -34,13 +32,11 @@ const Header = ({ isIntroDone }) => (
         left: "50%",
         transform: "translateX(-50 %)",
       },
+
+      ...sx,
     }}
   >
-    <Flex
-      sx={{
-        marginTop: "3rem",
-      }}
-    >
+    <Flex>
       {isIntroDone && (
         <Link to="/">
           <Logo

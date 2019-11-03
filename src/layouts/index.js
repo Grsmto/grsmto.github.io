@@ -3,7 +3,6 @@ import { Helmet } from "react-helmet";
 import { ThemeProvider } from "emotion-theming";
 
 import "modern-normalize/modern-normalize.css";
-import "basscss/css/basscss-cp.css";
 import "typeface-cooper-hewitt";
 import "typeface-exo-2";
 
@@ -16,7 +15,7 @@ import GlobalStyles from "../GlobalStyles";
 export const AppContext = React.createContext();
 
 const TemplateWrapper = ({ children, location }) => {
-  const [isIntroDone, setIntroDone] = useState(false);
+  const [isIntroDone, setIntroDone] = useState(true);
 
   return (
     <ThemeProvider theme={theme}>
@@ -30,7 +29,7 @@ const TemplateWrapper = ({ children, location }) => {
               { name: "keywords", content: "frontend, developer, freelance" },
             ]}
           />
-          <Header isIntroDone={isIntroDone} />
+          <Header isIntroDone={isIntroDone} sx={{ pt: 4 }} />
           <PageTransition location={location}>{children}</PageTransition>
         </div>
       </AppContext.Provider>

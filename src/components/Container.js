@@ -6,26 +6,7 @@ const Container = ({ sx, ...props }) => (
     sx={theme => ({
       maxWidth: "maxWidth",
       margin: "auto",
-      padding: "2rem",
-
-      "@supports (display: grid)": {
-        "&": {
-          display: "grid",
-          gridTemplateColumns: [
-            `[full-start] minmax(2rem, 1fr) [main-start] minmax(
-              0,
-              ${theme.sizes.maxWidth}
-            ) [main-end] minmax(2rem, 1fr) [full-end]`,
-            `[full-start] minmax(1rem, 1fr) [main-start] minmax(
-                0,
-                ${theme.sizes.maxWidth}
-              )
-              [main-end] minmax(1rem, 1fr) [full-end]`,
-          ],
-          maxWidth: "initial",
-          padding: 0,
-        },
-      },
+      px: [theme.space.gridGap.small * 2, theme.space.gridGap.large],
       ...sx,
     })}
     {...props}

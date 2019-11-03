@@ -1,8 +1,6 @@
-import React from 'react';
-import classnames from 'classnames';
-import { TransitionGroup, CSSTransition } from 'react-transition-group';
-
-import styles from './PageTransition.module.css';
+import React from "react";
+import { TransitionGroup, CSSTransition } from "react-transition-group";
+import { Box } from "rebass";
 
 class TransitionHandler extends React.Component {
   shouldComponentUpdate() {
@@ -19,7 +17,7 @@ class PageTransition extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      isChangingPage: false
+      isChangingPage: false,
     };
   }
 
@@ -28,22 +26,36 @@ class PageTransition extends React.Component {
 
     return (
       <div className="transition-container">
-        <div
-          className={classnames(styles.transition, {
-            [styles.isAnimating]: this.state.isChangingPage
-          })}
+        <Box
+          sx={{
+            position: "fixed",
+            top: 0,
+            left: "-50vw",
+            width: "200vw",
+            height: "100vh",
+            backgroundColor: "red",
+            zIndex: "transition",
+            visibility: "hidden",
+            ...(this.state.isChangingPage && {
+              visibility: "visible",
+              animation: "pageTransition 1.2s var(--ease-in -out - quint) both",
+            }),
+            ".enter": {
+              display: "none",
+            },
+          }}
         />
         <TransitionGroup>
           <CSSTransition
             key={location.pathname}
             classNames={{
-              enter: styles.enter,
-              exit: 'exit'
+              enter: "enter",
+              exit: "exit",
             }}
             timeout={{ enter: 600, exit: 1000 }}
             onEnter={() => {
               this.setState({
-                isChangingPage: true
+                isChangingPage: true,
               });
             }}
             onExited={() => {
@@ -52,7 +64,7 @@ class PageTransition extends React.Component {
               // if a re-render occurs here :/
               setTimeout(() => {
                 this.setState({
-                  isChangingPage: false
+                  isChangingPage: false,
                 });
               }, 0);
             }}

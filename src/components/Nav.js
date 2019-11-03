@@ -3,17 +3,17 @@ import { Box } from "rebass";
 
 import Link from "./Link";
 
-const linkStyles = {
+const linkStyles = ({ easings }) => ({
   display: "inline-block",
   position: "relative",
   color: "white",
   textDecoration: "none",
-  fontWeight: 400,
   textTransform: "uppercase",
+  fontSize: 2,
   paddingBottom: 1,
 
   "&:before, &:after": {
-    transition: "all 200ms var(--ease-out-quad)",
+    transition: `all 200ms ${easings.easeOutQuad}`,
     transform: "translateY(5px)",
     opacity: 0,
     top: "calc(100% - 0.15em - 5px)",
@@ -28,10 +28,10 @@ const linkStyles = {
       opacity: 1,
     },
   },
-};
+});
 
 const Nav = ({ sx, ...props }) => (
-  <Box as="nav" sx={{ fontSize: "1rem", ...sx }} {...props}>
+  <Box as="nav" sx={sx} {...props}>
     <Box
       as="ul"
       sx={{
@@ -40,7 +40,7 @@ const Nav = ({ sx, ...props }) => (
           display: "inline-block",
         },
         "li + li": {
-          ml: 3,
+          ml: 5,
         },
       }}
     >

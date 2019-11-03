@@ -1,15 +1,15 @@
 import { keyframes } from "@emotion/core";
 
 const theme = {
-  breakpoints: [0, 600, 768, 1140],
+  breakpoints: ["40em", "56em", "64em"],
   fonts: {
     body: "'Cooper Hewitt', system-ui, sans-serif",
     heading: "'Exo 2'",
   },
   fontWeights: {
-    body: 400,
-    heading: 900,
-    bold: 600,
+    body: 500,
+    heading: 800,
+    bold: 700,
   },
   lineHeights: {
     body: 1.7,
@@ -18,9 +18,9 @@ const theme = {
   fontSizes: {
     0: "1rem", // 10px
     1: "1.2rem", // 12px
-    2: "1.5rem", // 15px
-    3: "1.7rem", // 17px
-    4: "1.9rem", // 19px
+    2: "1.4rem", // 14px
+    3: "1.6rem", // 16px
+    4: "1.8rem", // 19px
     5: "2.3rem", // 23px
     6: "2.8rem", // 28px
     7: "3.8rem", // 38px
@@ -35,6 +35,7 @@ const theme = {
     yellow: "#fff17c",
     grey: ["#79868e"],
   },
+  space: [0, 5, 10, 15, 25, 40, 80, 120, 200],
   sizes: [],
   zIndices: {
     transition: 10,
@@ -53,21 +54,26 @@ const theme = {
     headings: {
       h1: {
         fontFamily: "heading",
-        fontWeights: "heading",
+        fontWeight: "heading",
         textTransform: "uppercase",
-        fontSize: 9,
+        fontSize: [7, 10],
       },
       h2: {
+        fontFamily: "body",
+        fontWeight: "body",
         textTransform: "uppercase",
-        fontSize: 4,
+        fontSize: [4, 6],
       },
       h3: {
+        fontFamily: "heading",
+        fontWeight: "heading",
         textTransform: "uppercase",
         fontSize: 3,
       },
       h4: {
         textTransform: "uppercase",
         fontSize: 2,
+        color: "grey.0",
       },
       h5: {
         textTransform: "uppercase",
@@ -82,8 +88,12 @@ const theme = {
 };
 
 theme.colors.body = "white";
-theme.fontSizes.body = theme.fontSizes[2];
+theme.fontSizes.body = theme.fontSizes[3];
 theme.sizes.maxWidth = "128rem";
+theme.space.gridGap = {
+  small: theme.space[3],
+  large: theme.space[5],
+};
 
 theme.animations = {
   appear: keyframes`

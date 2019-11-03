@@ -1,7 +1,0 @@
-@import '../layouts/variables.css';
-
-.projects {
-  position: relative;
-  z-index: var(--z-index-projects);
-  box-shadow: 0px 4px 30px black;
-}
