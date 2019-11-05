@@ -1,6 +1,10 @@
 module.exports = {
   siteMetadata: {
-    title: `Adrien Denat, front-end developer freelance`,
+    title: "Adrien Denat",
+    description: "Freelance frontend engineer based in London.",
+    siteUrl: "https://adriendenat.com",
+    banner: "/open-graph.jpg",
+    twitter: "adriendenat",
   },
   plugins: [
     `gatsby-plugin-layout`,
