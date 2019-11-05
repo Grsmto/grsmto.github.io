@@ -1,5 +1,5 @@
 import React, { useRef } from "react";
-import { Box, Flex, Text, Heading } from "rebass";
+import { Box, Text, Heading } from "@theme-ui/components";
 
 const Intro = ({ onEnd, isVisible }) => {
   const ref = useRef();
@@ -7,7 +7,7 @@ const Intro = ({ onEnd, isVisible }) => {
   return (
     <Box
       sx={{
-        position: "absolute",
+        position: "fixed",
         top: 0,
         bottom: 0,
         left: 0,
@@ -30,7 +30,7 @@ const Intro = ({ onEnd, isVisible }) => {
         sx={({ easings, animations }) => ({
           position: "relative",
           fontSize: ["2rem", "5rem"],
-          animation: `${animations.disappearRight} 0.5s 4s ${easings.inOutQuint} forwards`,
+          animation: `${animations.disappearRight} 0.5s 3.4s ${easings.inOutQuint} forwards`,
           willChange: "transform opacity",
           whiteSpace: "nowrap",
           textAlign: "center",
@@ -69,7 +69,7 @@ const Intro = ({ onEnd, isVisible }) => {
             fontStyle: "italic",
             color: "red",
             mt: "-5px",
-            animation: `${animations.fadeIn} 300ms 2.9s both`,
+            animation: `${animations.fadeIn} 300ms 1.7s both`,
           })}
         >
           developer

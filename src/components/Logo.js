@@ -1,6 +1,6 @@
 import React from "react";
 import { keyframes } from "@emotion/core";
-import { Heading, Flex, Box } from "rebass";
+import { Heading, Flex, Box } from "@theme-ui/components";
 
 import { underlinedDouble } from "../utils/styles";
 

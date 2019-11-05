@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { style } from "styled-system";
-import { Box } from "rebass";
+import { Box } from "@theme-ui/components";
 
 const span = style({
   prop: "span",
@@ -19,11 +19,11 @@ const Col = ({ sx, fullWidth, gridColumn, gridRow, ...otherProps }) => (
       "@supports (display: grid)": {
         p: 0,
       },
-      ...sx,
       ...span({ ...otherProps, theme }),
       ...(fullWidth && { gridColumn: "-1 / 1" }),
       ...(gridColumn && { gridColumn }),
       ...(gridRow && { gridRow }),
+      ...(typeof sx === "function" ? sx(theme) : sx),
     })}
     {...otherProps}
   />

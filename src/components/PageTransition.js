@@ -1,6 +1,6 @@
 import React from "react";
 import { TransitionGroup, CSSTransition } from "react-transition-group";
-import { Box } from "rebass";
+import { Box } from "@theme-ui/components";
 
 class TransitionHandler extends React.Component {
   shouldComponentUpdate() {
@@ -25,9 +25,15 @@ class PageTransition extends React.Component {
     const { children, location } = this.props;
 
     return (
-      <div className="transition-container">
+      <Box
+        sx={{
+          ".enter": {
+            display: "none",
+          },
+        }}
+      >
         <Box
-          sx={{
+          sx={({ easings, animations }) => ({
             position: "fixed",
             top: 0,
             left: "-50vw",
@@ -38,12 +44,9 @@ class PageTransition extends React.Component {
             visibility: "hidden",
             ...(this.state.isChangingPage && {
               visibility: "visible",
-              animation: "pageTransition 1.2s var(--ease-in -out - quint) both",
+              animation: `${animations.pageTransition} 1.2s ${easings.inOutQuint} both`,
             }),
-            ".enter": {
-              display: "none",
-            },
-          }}
+          })}
         />
         <TransitionGroup>
           <CSSTransition
@@ -74,7 +77,7 @@ class PageTransition extends React.Component {
             </TransitionHandler>
           </CSSTransition>
         </TransitionGroup>
-      </div>
+      </Box>
     );
   }
 }

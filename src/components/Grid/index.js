@@ -1,7 +1,7 @@
 /** @jsx jsx */
 import { jsx } from "theme-ui";
 import { forwardRef } from "react";
-import { Box } from "rebass";
+import { Box } from "@theme-ui/components";
 
 const Grid = forwardRef(({ sx, ...props }, ref) => {
   return (
