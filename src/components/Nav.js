@@ -1,29 +1,29 @@
 import React from "react";
-import { Box } from "rebass";
+import { Box } from "@theme-ui/components";
 
 import Link from "./Link";
 
 const linkStyles = ({ easings }) => ({
-  display: "inline-block",
   position: "relative",
   color: "white",
   textDecoration: "none",
   textTransform: "uppercase",
   fontSize: 2,
-  paddingBottom: 1,
 
-  "&:before, &:after": {
-    transition: `all 200ms ${easings.easeOutQuad}`,
+  "&:before": {
+    position: "absolute",
+    content: '""',
+    width: "100%",
+    top: "calc(100% - 0.05em)",
+    left: 0,
+    borderBottom: "0.1em solid",
+    transition: `all 200ms ${easings.outQuad}`,
     transform: "translateY(5px)",
     opacity: 0,
-    top: "calc(100% - 0.15em - 5px)",
   },
 
-  "&:hover": {
-    color: "grey",
-
-    "&:before, &:after": {
-      borderColor: "grey",
+  "&:hover, &.active": {
+    "&:before": {
       transform: "translateY(0)",
       opacity: 1,
     },
@@ -40,7 +40,7 @@ const Nav = ({ sx, ...props }) => (
           display: "inline-block",
         },
         "li + li": {
-          ml: 5,
+          ml: [4, 5],
         },
       }}
     >

@@ -7,10 +7,10 @@ export const underlinedDouble = {
     width: "100%",
     top: "calc(100% - 0.15em)",
     left: 0,
-    borderBottom: "1px solid white",
+    borderBottom: "0.1em solid",
   },
 
   "&:after": {
-    marginTop: "2px",
+    marginTop: "0.15em",
   },
 };

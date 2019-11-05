@@ -18,7 +18,7 @@ const GlobalStyles = createGlobalStyle({
     minHeight: "100vh",
   },
   "::selection": {
-    backgroundColor: "rgba(255, 241, 124, 0.99)",
+    backgroundColor: "rgba(255, 48, 43, 0.99)",
     color: "black",
     opacity: 1,
     textShadow: "none",
@@ -64,6 +64,7 @@ const GlobalStyles = createGlobalStyle({
   },
   "img, video": {
     maxWidth: "100%",
+    display: "block",
   },
   "[hidden]": {
     display: "none!important",

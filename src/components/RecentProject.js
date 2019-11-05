@@ -1,11 +1,8 @@
 import React, { Component } from "react";
 import { Motion, spring, presets } from "react-motion";
-import { Box, Heading } from "rebass";
+import { Box, Heading } from "@theme-ui/components";
 
-import Container from "./Container";
 import GridRow from "./GridRow";
-
-import config from "../config";
 
 const opacity = x => Math.max(0, Math.min(1, x));
 const SM_BREAKPOINT = "600px";
@@ -43,7 +40,6 @@ export default class RecentProject extends Component {
     const {
       title,
       description,
-      html,
       url,
       tech,
       year,
@@ -70,7 +66,6 @@ export default class RecentProject extends Component {
             sx={{
               position: "relative",
               zIndex: 1,
-              mb: 6,
             }}
             ref={r => (this.projectEl = r)}
           >
@@ -79,12 +74,12 @@ export default class RecentProject extends Component {
                 zIndex: 1,
               }}
             >
-              <GridRow.Col gridColumn={["1 / -1", "4 / -2"]}>
-                <Heading as="h1" variant="text.headings.h1">
-                  <span>{title}</span>
+              <GridRow.Col gridColumn={["1 / -1", "2 / -2", "4 / -2"]}>
+                <Heading as="h1" variant="text.headings.h1" sx={{ mb: [4, 0] }}>
+                  {title}
                 </Heading>
               </GridRow.Col>
-              <GridRow.Col gridColumn={["1 / -1", "4 / span 3"]}>
+              <GridRow.Col gridColumn={["1 / -1", "2 / span 3", "4 / span 3"]}>
                 <Box>
                   <Heading variant="text.headings.h3" sx={{ mb: 3 }}>
                     Infos
@@ -99,27 +94,12 @@ export default class RecentProject extends Component {
                   </p>
                 </Box>
               </GridRow.Col>
-              <GridRow.Col gridColumn={["1 / -1", "7 / span 3"]}>
+              <GridRow.Col gridColumn={["1 / -1", "6 / span 4", "7 / span 3"]}>
                 <Box>
                   <Heading variant="text.headings.h3" sx={{ mb: 3 }}>
                     Tech
                   </Heading>
                   <p>{tech}</p>
-                </Box>
-                <Box sx={{ ml: "auto" }}>
-                  <Box
-                    as="a"
-                    sx={{
-                      display: "inline-block",
-                      color: "red",
-                      textTransform: "uppercase",
-                      fontWeight: "bold",
-                    }}
-                    href={url}
-                    target="_blank"
-                  >
-                    Visit site
-                  </Box>
                 </Box>
               </GridRow.Col>
               <GridRow.Col gridColumn={["1 / -1", "10 / -1"]}>

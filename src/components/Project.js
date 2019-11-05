@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Motion, spring, presets } from "react-motion";
-import { Box, Heading } from "rebass";
+import { Box, Heading } from "@theme-ui/components";
 
 import Container from "./Container";
 import GridRow from "./GridRow";
@@ -69,7 +69,6 @@ export default class Project extends Component {
 
     return (
       <Container
-        as="section"
         sx={{
           position: "relative",
           py: 8,
@@ -88,19 +87,9 @@ export default class Project extends Component {
           }}
         >
           {currentStyles => (
-            <Box
-              sx={{
-                position: "relative",
-                zIndex: 1,
-              }}
-              ref={r => (this.projectEl = r)}
-            >
-              <GridRow
-                sx={{
-                  zIndex: 1,
-                }}
-              >
-                <GridRow.Col gridColumn={["1 / -1", "4 / -4"]}>
+            <Box ref={r => (this.projectEl = r)}>
+              <GridRow>
+                <GridRow.Col gridColumn={["1 / -1", "2 / -2", "4 / -4"]}>
                   <Heading as="h1" variant="text.headings.h1">
                     <span>{title}</span>
                   </Heading>
@@ -116,13 +105,13 @@ export default class Project extends Component {
                   sx={{
                     gridColumn: "1 / -1",
                     p: {
-                      gridColumn: ["1 / -1", "4 / -4"],
+                      gridColumn: ["1 / -1", "2 / -2", "4 / -4"],
                     },
                     blockquote: {
                       fontSize: [4, 6],
                       fontWeight: "bold",
                       lineHeight: "heading",
-                      gridColumn: ["1 / -1", "3 / -5"],
+                      gridColumn: ["1 / -1", "1 / -4", "3 / -5"],
                       my: 5,
                       em: {
                         display: "inline-block",
@@ -143,7 +132,12 @@ export default class Project extends Component {
                   }
                   dangerouslySetInnerHTML={{ __html: html }}
                 />
-                <GridRow.Col gridColumn="2 / 12">
+                <GridRow.Col
+                  gridColumn={["1 / -1", "2 / 12"]}
+                  sx={theme => ({
+                    mx: [-theme.space.gridGap.small * 2, 0],
+                  })}
+                >
                   <Box
                     as="video"
                     sx={{
@@ -164,11 +158,10 @@ export default class Project extends Component {
                     />
                   </Box>
                 </GridRow.Col>
-                <GridRow.Col gridColumn={["1 / -1", "4 / -4"]}>
+                <GridRow.Col gridColumn={["1 / -1", "2 / -2", "4 / -4"]}>
                   <Box
                     sx={{
                       textTransform: "uppercase",
-                      // fontSize: [0, 1],
                     }}
                     style={{
                       opacity: currentStyles.opacityContent,
