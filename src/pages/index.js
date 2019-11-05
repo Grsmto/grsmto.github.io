@@ -72,6 +72,7 @@ export const query = graphql`
     }
     recentProjects: allMarkdownRemark(
       filter: { fileAbsolutePath: { regex: "/(/recent-projects/)/" } }
+      sort: { fields: frontmatter___order }
     ) {
       edges {
         node {
