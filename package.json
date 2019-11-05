@@ -38,6 +38,7 @@
     "react-headroom": "^3.0.0",
     "react-helmet": "^6.0.0-beta",
     "react-motion": "^0.5.2",
+    "react-remove-scroll": "^2.2.0",
     "react-track": "^0.4.4",
     "react-transition-group": "^4.3.0",
     "rebass": "^4.0.6",

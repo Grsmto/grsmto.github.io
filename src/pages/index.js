@@ -6,6 +6,7 @@ import {
   topTop,
   topBottom,
 } from "react-track/tracking-formulas";
+import { RemoveScroll } from "react-remove-scroll";
 
 import { AppContext } from "../layouts";
 
@@ -16,10 +17,6 @@ import RecentProjects from "../components/RecentProjects";
 
 const IndexPage = ({ data }) => {
   const { isIntroDone, setIntroDone } = useContext(AppContext);
-  const hideScrollStyle = {
-    maxHeight: "100vh",
-    overflow: "hidden",
-  };
 
   const onIntroEnd = useCallback(() => {
     setIntroDone(true);
@@ -28,8 +25,8 @@ const IndexPage = ({ data }) => {
   return (
     <TrackDocument formulas={[getDocumentElement, topTop, topBottom]}>
       {(documentElement, topTop, topBottom) => (
-        <div className="page" style={!isIntroDone ? hideScrollStyle : null}>
-          {/* <Intro onEnd={onIntroEnd} isVisible={!isIntroDone} /> */}
+        <RemoveScroll enabled={!isIntroDone}>
+          <Intro onEnd={onIntroEnd} isVisible={!isIntroDone} />
           <Projects
             data={data.projects.edges}
             documentElement={documentElement}
@@ -45,7 +42,7 @@ const IndexPage = ({ data }) => {
             isVisible={isIntroDone}
           />
           <Footer />
-        </div>
+        </RemoveScroll>
       )}
     </TrackDocument>
   );
