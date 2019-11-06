@@ -1,10 +1,7 @@
-import React, { useState, useEffect, useCallback, useContext } from "react";
-import { Helmet } from "react-helmet";
+import React, { useEffect, useContext } from "react";
 import { graphql } from "gatsby";
 import Img from "gatsby-image";
-import { Global, css } from "@emotion/core";
-import { Box, Heading, Flex } from "rebass";
-import { format } from "date-fns";
+import { Box, Heading } from "@theme-ui/components";
 import { Motion, spring } from "react-motion";
 import { TrackDocument } from "react-track";
 import {
@@ -12,22 +9,30 @@ import {
   calculateScrollY,
 } from "react-track/tracking-formulas";
 import { fluidRange, hideVisually } from "polished";
+import { merge } from "lodash";
 
 import { AppContext } from "../layouts";
-import mzone from "../utils/timezone";
+import { underlinedDouble } from "../utils/styles";
 
 import Container from "../components/Container";
 import GridRow from "../components/GridRow";
+import SEO from "../components/SEO";
 
-const socialLinkStyle = {
+const socialLinkStyle = merge({}, underlinedDouble, {
   textTransform: "uppercase",
   lineHeight: 1.15,
+  textDecoration: "none",
   ...fluidRange({
-    prop: "font-size",
+    prop: "fontSize",
     fromSize: "40px",
     toSize: "100px",
   }),
-};
+  "&:hover": {
+    "&:before, &:after": {
+      border: "none",
+    },
+  },
+});
 
 const isSafari =
   typeof navigator !== "undefined"
@@ -35,20 +40,7 @@ const isSafari =
     : false;
 
 const AboutPage = ({ data }) => {
-  const [time, setTime] = useState();
   const context = useContext(AppContext);
-
-  const setLocalTime = useCallback(() => {
-    setTime(format(mzone.tz(new Date(), "America/Sao_Paulo"), "HH:mm:ss"));
-  }, []);
-
-  useEffect(() => {
-    const localTimeInterval = setInterval(setLocalTime, 1000);
-
-    return () => {
-      clearInterval(localTimeInterval);
-    };
-  }, [setLocalTime]);
 
   useEffect(() => {
     context.setIntroDone(true);
@@ -58,7 +50,7 @@ const AboutPage = ({ data }) => {
     <TrackDocument formulas={[getDocumentElement, calculateScrollY]}>
       {(documentElement, scrollY) => (
         <Box sx={{ position: "relative" }}>
-          <Helmet title="Adrien Denat | About" />
+          <SEO title="About" />
           {!isSafari && (
             <Motion
               style={{
@@ -121,7 +113,7 @@ const AboutPage = ({ data }) => {
                     as="span"
                     sx={{
                       ...fluidRange({
-                        prop: "font-size",
+                        prop: "fontSize",
                         fromSize: "150px",
                         toSize: "400px",
                       }),
@@ -137,13 +129,13 @@ const AboutPage = ({ data }) => {
                       alignSelf: "center",
                       textTransform: "uppercase",
                       ...fluidRange({
-                        prop: "font-size",
+                        prop: "fontSize",
                         fromSize: "40px",
                         toSize: "150px",
                       }),
                     }}
                   >
-                    Let's dev!
+                    I'm Adrien
                   </Box>
                 </Heading>
               </GridRow.Col>
@@ -174,11 +166,7 @@ const AboutPage = ({ data }) => {
           <Container sx={{ mt: 7 }}>
             <GridRow>
               <GridRow.Col gridColumn={["1 / -1", "3 / -3", "4 / -4"]}>
-                <Heading
-                  as="h2"
-                  variant="text.headings.h2"
-                  sx={{ mb: 6, color: "red" }}
-                >
+                <Heading as="h2" variant="text.headings.h2" sx={{ mb: [4, 5] }}>
                   Freelance developer based in London,
                   <br />
                   currently working from Brazil. 🇧🇷
@@ -205,8 +193,28 @@ const AboutPage = ({ data }) => {
                     rel="noopener noreferrer"
                   >
                     articles
+                  </a>{" "}
+                  or during{" "}
+                  <a
+                    href="https://slides.com/adriendenat"
+                    target="blank"
+                    rel="noopener noreferrer"
+                  >
+                    talks
                   </a>
                   .
+                </p>
+                <p>
+                  I'm also a strong believer of open source and I try to
+                  contribute on my free time. Check out my{" "}
+                  <a
+                    href="https://github.com/Grsmto/"
+                    target="blank"
+                    rel="noopener noreferrer"
+                  >
+                    Github
+                  </a>
+                  !
                 </p>
                 <Heading
                   as="span"
@@ -251,20 +259,20 @@ const AboutPage = ({ data }) => {
                   position of lead frontend developer at NEVERBLAND to start
                   working as a freelancer.
                   <br />
-                  I now have about 5 projects in production using React, Redux
-                  and also GraphQL, but I'm open to other frameworks too! I'm
-                  always looking for the fastest, cleanest and most efficient
-                  way to build user interfaces.
+                  I now have a dozen of projects in production using React,
+                  Redux and also GraphQL, but I'm open to other frameworks too!
+                  I'm always looking for the fastest, cleanest and most
+                  efficient way to build user interfaces.
                   <br />
-                  Lately I have been focusing on mobile applications using React
-                  Native and Java on Android.
+                  Lately I have been focusing on Design Systems and products
+                  frontend architecture.
                   <br />I love remote work and I would make you change your mind
                   about how efficient it can be!
                 </p>
               </GridRow.Col>
             </GridRow>
             <GridRow sx={{ my: 7 }}>
-              <GridRow.Col gridColumn={["span 6 / 12"]}>
+              <GridRow.Col gridColumn={["4 / -1", "6 / -1"]}>
                 <Box
                   as="ul"
                   sx={{
