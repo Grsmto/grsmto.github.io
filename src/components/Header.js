@@ -1,33 +1,57 @@
-import React from 'react';
-import classnames from 'classnames';
-import { withRouter } from 'react-router-dom';
-import { connect } from 'react-redux';
-import Link from 'gatsby-link';
+import React from "react";
+import { Link } from "gatsby";
+import { Flex } from "@theme-ui/components";
+import Headroom from "react-headroom";
 
-import styles from './Header.module.css';
+import Container from "./Container";
+import Nav from "./Nav";
+import Logo from "./Logo";
 
-import Nav from './Nav';
-import Logo from './Logo';
+const Header = ({ isIntroDone, sx }) => (
+  <Headroom>
+    <Container
+      as="header"
+      sx={{
+        // position: "fixed",
+        zIndex: "header",
+        width: "100%",
+        opacity: 0,
+        visibility: "hidden",
+        transition: "all 300ms",
+        top: 0,
+        left: 0,
+        right: 0,
 
-const Header = ({ isIntroDone }) =>
-  <header
-    className={classnames(styles.header, {
-      [styles.visible]: isIntroDone
-    })}
-  >
-    <div className={styles.headerInner}>
-      <div>
-        {isIntroDone &&
-          <Link to="/" exact>
-            <Logo className={styles.logo} />
-          </Link>}
-      </div>
-      <Nav />
-    </div>
-  </header>;
+        ...(isIntroDone && {
+          opacity: 1,
+          visibility: "visible",
+        }),
 
-const mapStateToProps = ({ isIntroDone }) => {
-  return { isIntroDone };
-};
+        "&:before": {
+          position: "absolute",
+          content: '"Boing!"',
+          top: "-3rem",
+          left: "50%",
+          transform: "translateX(-50 %)",
+        },
 
-export default withRouter(connect(mapStateToProps)(Header));
+        ...sx,
+      }}
+    >
+      <Flex>
+        {isIntroDone && (
+          <Link to="/">
+            <Logo
+              sx={{
+                display: "inline-block",
+              }}
+            />
+          </Link>
+        )}
+        <Nav sx={{ ml: "auto" }} />
+      </Flex>
+    </Container>
+  </Headroom>
+);
+
+export default Header;

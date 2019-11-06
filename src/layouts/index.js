@@ -1,36 +1,32 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import Helmet from 'react-helmet';
+import React, { useState } from "react";
+import { ThemeProvider } from "emotion-theming";
 
-import 'typeface-cooper-hewitt';
+import "modern-normalize/modern-normalize.css";
+import "typeface-cooper-hewitt";
+import "typeface-exo-2";
 
-if (
-  process.env.NODE_ENV === `development` ||
-  (process.env.NODE_ENV === `production` && process.browser !== true)
-) {
-  require('./index.css');
-}
+import PageTransition from "../components/PageTransition";
+import Header from "../components/Header";
+import SEO from "../components/SEO";
 
-import PageTransition from '../components/PageTransition';
-import Header from '../components/Header';
+import theme from "../theme";
+import GlobalStyles from "../GlobalStyles";
 
-const TemplateWrapper = ({ children, location }) =>
-  <div className="main-container">
-    <Helmet
-      title="Adrien Denat"
-      meta={[
-        { name: 'description', content: 'Frontend developer freelance' },
-        { name: 'keywords', content: 'frontend, developer, freelance' }
-      ]}
-    />
-    <Header />
-    <PageTransition location={location}>
-      {children()}
-    </PageTransition>
-  </div>;
+export const AppContext = React.createContext();
 
-TemplateWrapper.propTypes = {
-  children: PropTypes.func
+const TemplateWrapper = ({ children, location }) => {
+  const [isIntroDone, setIntroDone] = useState(false);
+
+  return (
+    <ThemeProvider theme={theme}>
+      <AppContext.Provider value={{ isIntroDone, setIntroDone }}>
+        <GlobalStyles />
+        <SEO />
+        <Header isIntroDone={isIntroDone} sx={{ pt: 4 }} />
+        <PageTransition location={location}>{children}</PageTransition>
+      </AppContext.Provider>
+    </ThemeProvider>
+  );
 };
 
 export default TemplateWrapper;

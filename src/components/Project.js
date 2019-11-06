@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import classnames from 'classnames';
-import { Motion, spring, presets } from 'react-motion';
+import React, { Component } from "react";
+import { Motion, spring, presets } from "react-motion";
+import { Box, Heading } from "@theme-ui/components";
 
-import styles from './Project.module.css';
+import Container from "./Container";
+import GridRow from "./GridRow";
 
-import { IconArrow } from './Icons';
-import config from '../config';
+import config from "../config";
 
 const opacity = x => Math.max(0, Math.min(1, x));
-const SM_BREAKPOINT = '600px';
+const SM_BREAKPOINT = "600px";
 
 export default class Project extends Component {
   constructor(props) {
@@ -18,7 +18,7 @@ export default class Project extends Component {
   }
 
   componentDidMount() {
-    window.addEventListener('onresize', this.onResize);
+    window.addEventListener("onresize", this.onResize);
 
     if (this.props.isOnScreen) {
       this.video.play();
@@ -26,7 +26,7 @@ export default class Project extends Component {
   }
 
   componentWillUnmount() {
-    window.removeEventListener('onresize', this.onResize);
+    window.removeEventListener("onresize", this.onResize);
   }
 
   shouldComponentUpdate(nextProps) {
@@ -49,7 +49,7 @@ export default class Project extends Component {
   onResize() {
     this.setState({
       isViewportSizeSm: window.matchMedia(`(min-width: ${SM_BREAKPOINT})`)
-        .matches
+        .matches,
     });
   }
 
@@ -63,15 +63,16 @@ export default class Project extends Component {
       tech,
       year,
       scrollY,
-      isOnScreen
+      isOnScreen,
     } = this.props;
     const elHeight = this.projectEl ? this.projectEl.offsetHeight : 1;
 
     return (
-      <section
-        className={classnames(styles.project, {
-          [styles.isOnScreen]: isOnScreen
-        })}
+      <Container
+        sx={{
+          position: "relative",
+          py: 8,
+        }}
       >
         <Motion
           style={{
@@ -83,83 +84,119 @@ export default class Project extends Component {
               Math.max(opacity((scrollY - 50) / (elHeight / 20)), 0.2),
               presets.stiff
             ),
-            y: spring(Math.max(-scrollY / 4, -40)),
-            y2: spring(Math.max(-scrollY / 4, -80)),
-            y3: spring(Math.max(-scrollY / 6, -80))
           }}
         >
-          {currentStyles =>
-            <div
-              ref={r => (this.projectEl = r)}
-              className={styles.projectInfos}
-            >
-              <div
-                className={styles.background}
-                style={{ opacity: currentStyles.opacityBg }}
-              />
-              <div className={styles.projectInfosInner}>
-                <h1 className={classnames(styles.title)}>
-                  <span>
-                    {title}
-                  </span>
-                </h1>
-                <h2
-                  className={styles.description}
-                  style={{
-                    transform: `translateY(${currentStyles.y}px)`
+          {currentStyles => (
+            <Box ref={r => (this.projectEl = r)}>
+              <GridRow>
+                <GridRow.Col gridColumn={["1 / -1", "2 / -2", "4 / -4"]}>
+                  <Heading as="h1" variant="text.headings.h1">
+                    <span>{title}</span>
+                  </Heading>
+                  <Heading
+                    as="h2"
+                    variant="text.headings.h2"
+                    sx={{ color: "red", mt: 4, mb: 4 }}
+                  >
+                    <span>{description}</span>
+                  </Heading>
+                </GridRow.Col>
+                <GridRow
+                  sx={{
+                    gridColumn: "1 / -1",
+                    p: {
+                      gridColumn: ["1 / -1", "2 / -2", "4 / -4"],
+                    },
+                    blockquote: {
+                      fontSize: [4, 6],
+                      fontWeight: "bold",
+                      lineHeight: "heading",
+                      gridColumn: ["1 / -1", "1 / -4", "3 / -5"],
+                      my: 5,
+                      em: {
+                        display: "inline-block",
+                        fontWeight: "body",
+                        fontSize: [2, 3],
+                        mt: 2,
+                        "&:before": {
+                          content: '"/"',
+                          fontSize: [4, 7],
+                        },
+                      },
+                    },
                   }}
+                  style={
+                    {
+                      // opacity: currentStyles.opacityContent,
+                    }
+                  }
+                  dangerouslySetInnerHTML={{ __html: html }}
+                />
+                <GridRow.Col
+                  gridColumn={["1 / -1", "2 / 12"]}
+                  sx={theme => ({
+                    mx: [-theme.space.gridGap.small * 2, 0],
+                  })}
                 >
-                  <span>
-                    {description}
-                  </span>
-                </h2>
-                <div className={styles.contentContainer}>
-                  <div
-                    className={styles.content}
-                    style={{
-                      opacity: currentStyles.opacityContent,
-                      transform: `translateY(${currentStyles.y2}px)`
+                  <Box
+                    as="video"
+                    sx={{
+                      my: 4,
+                      backgroundColor: "black",
                     }}
-                    dangerouslySetInnerHTML={{ __html: html }}
-                  />
-                  <div
-                    className={styles.meta}
+                    ref={r => (this.video = r)}
+                    loop
+                    muted
+                  >
+                    <source
+                      src={`${config.s3BucketUrl}/${videos.desktop}.webm`}
+                      type="video/webm"
+                    />
+                    <source
+                      src={`${config.s3BucketUrl}/${videos.desktop}.mp4`}
+                      type="video/mp4"
+                    />
+                  </Box>
+                </GridRow.Col>
+                <GridRow.Col gridColumn={["1 / -1", "2 / -2", "4 / -4"]}>
+                  <Box
+                    sx={{
+                      textTransform: "uppercase",
+                    }}
                     style={{
                       opacity: currentStyles.opacityContent,
-                      transform: `translateY(${currentStyles.y3}px)`
                     }}
                   >
-                    <div className={styles.metaContainer}>
-                      <h4 className={styles.metaLabel}>Technology: </h4>
+                    <div>
+                      <strong>Tech: </strong>
                       {tech}
                     </div>
-                    <div className={styles.metaContainer}>
-                      <h4 className={styles.metaLabel}>Year: </h4>
+                    <div>
+                      <strong>Year: </strong>
                       {year}
                     </div>
-                  </div>
-                  <div className={styles.siteLinkContainer}>
-                    <a className={styles.siteLink} href={url} target="_blank">
-                      Visit site <IconArrow className={styles.siteLinkIcon} />
-                    </a>
-                  </div>
-                </div>
-              </div>
-            </div>}
+                  </Box>
+                  <Box sx={{ ml: "auto" }}>
+                    <Box
+                      as="a"
+                      sx={{
+                        display: "inline-block",
+                        color: "red",
+                        textTransform: "uppercase",
+                        fontWeight: "bold",
+                      }}
+                      href={url}
+                      target="_blank"
+                    >
+                      Visit site
+                    </Box>
+                  </Box>
+                </GridRow.Col>
+              </GridRow>
+            </Box>
+          )}
         </Motion>
-        <div className={styles.videoContainer}>
-          <video className={styles.video} ref={r => (this.video = r)} loop muted>
-            <source
-              src={`${config.s3BucketUrl}/${videos.desktop}.webm`}
-              type="video/webm"
-            />
-            <source
-              src={`${config.s3BucketUrl}/${videos.desktop}.mp4`}
-              type="video/mp4"
-            />
-          </video>
-        </div>
-      </section>
+      </Container>
     );
   }
 }

@@ -1,36 +1,61 @@
-import React from 'react';
-import Link from 'gatsby-link';
+import React from "react";
+import { Box } from "@theme-ui/components";
 
-import styles from './Nav.module.css';
+import Link from "./Link";
 
-class Nav extends React.Component {
-  render() {
-    return (
-      <nav className={styles.nav}>
-        <ul className="list-reset m0 right-align">
-          <li className="inline-block">
-            <Link
-              className={styles.link}
-              activeClassName={styles.active}
-              to="/"
-              exact
-            >
-              projects
-            </Link>
-          </li>
-          <li className="inline-block ml3">
-            <Link
-              className={styles.link}
-              activeClassName={styles.active}
-              to="/about"
-            >
-              about
-            </Link>
-          </li>
-        </ul>
-      </nav>
-    );
-  }
-}
+const linkStyles = ({ easings }) => ({
+  position: "relative",
+  color: "white",
+  textDecoration: "none",
+  textTransform: "uppercase",
+  fontSize: 2,
+
+  "&:before": {
+    position: "absolute",
+    content: '""',
+    width: "100%",
+    top: "calc(100% - 0.05em)",
+    left: 0,
+    borderBottom: "0.1em solid",
+    transition: `all 200ms ${easings.outQuad}`,
+    transform: "translateY(5px)",
+    opacity: 0,
+  },
+
+  "&:hover, &.active": {
+    "&:before": {
+      transform: "translateY(0)",
+      opacity: 1,
+    },
+  },
+});
+
+const Nav = ({ sx, ...props }) => (
+  <Box as="nav" sx={sx} {...props}>
+    <Box
+      as="ul"
+      sx={{
+        textAlign: "right",
+        li: {
+          display: "inline-block",
+        },
+        "li + li": {
+          ml: [4, 5],
+        },
+      }}
+    >
+      <li>
+        <Link sx={linkStyles} to="/">
+          projects
+        </Link>
+      </li>
+      <li>
+        <Link sx={linkStyles} to="/about">
+          about
+        </Link>
+      </li>
+    </Box>
+  </Box>
+);
 
 export default Nav;

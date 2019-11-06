@@ -1,19 +1,37 @@
-import React, { Component } from 'react';
-import classnames from 'classnames';
+import React from "react";
+import { keyframes } from "@emotion/core";
+import { Heading, Flex, Box } from "@theme-ui/components";
 
-import styles from './Logo.module.css';
+import { underlinedDouble } from "../utils/styles";
 
-export default class Logo extends Component {
-  render() {
-    const { className } = this.props;
+const appear = keyframes({
+  "0%": { transform: "translate3d(0, -10px, 0) rotateZ(-10deg)", opacity: 0 },
+  "100%": { transform: "translate3d(0, 0, 0)", opacity: 1 },
+});
 
-    return (
-      <div className={classnames(className, styles.logo)}>
-        <span>
-          <span className={styles.name}>adrien.</span>
-          <span className={styles.subtitle}>dev</span>
-        </span>
-      </div>
-    );
-  }
-}
+const Logo = ({ sx, ...props }) => (
+  <Heading
+    sx={{
+      textAlign: "center",
+      fontSize: ["body", "body"],
+      fontStyle: "italic",
+      ...sx,
+    }}
+    variant="text.headings.h1"
+    {...props}
+  >
+    <Flex>
+      <Box sx={{ color: "white", ...underlinedDouble }}>Adrien.</Box>
+      <Box
+        sx={({ animations }) => ({
+          color: "red",
+          animation: `${appear} 1s 100ms ${animations.inOutQuint} backwards`,
+        })}
+      >
+        Denat
+      </Box>
+    </Flex>
+  </Heading>
+);
+
+export default Logo;

@@ -1,34 +1,82 @@
-import React, { Component } from 'react';
-import classnames from 'classnames';
+import React, { useRef } from "react";
+import { Box, Text, Heading } from "@theme-ui/components";
 
-import styles from './Intro.module.css';
+const Intro = ({ onEnd, isVisible }) => {
+  const ref = useRef();
 
-export default class Intro extends Component {
-  render() {
-    const { className, onEnd, isVisible } = this.props;
+  return (
+    <Box
+      sx={{
+        position: "fixed",
+        top: 0,
+        bottom: 0,
+        left: 0,
+        right: 0,
+        display: "flex",
+        justifyContent: "center",
+        alignItems: "center",
+        zIndex: "intro",
+        backgroundColor: "black",
+        overflow: "hidden",
 
-    return (
-      <div
-        className={classnames(className, styles.logo, {
-          [styles.hidden]: !isVisible
+        ...(!isVisible && {
+          transition: "all 0.5s",
+          opacity: 0,
+          visibility: "hidden",
+        }),
+      }}
+    >
+      <Heading
+        sx={({ easings, animations }) => ({
+          position: "relative",
+          fontSize: ["2rem", "5rem"],
+          animation: `${animations.disappearRight} 0.5s 3.4s ${easings.inOutQuint} forwards`,
+          willChange: "transform opacity",
+          whiteSpace: "nowrap",
+          textAlign: "center",
         })}
+        variant="text.headings.h1"
+        onAnimationEnd={e => {
+          if (e.target === ref.current) {
+            onEnd();
+          }
+        }}
+        ref={ref}
       >
-        <span
-          className={classnames(styles.logoInner)}
-          onAnimationEnd={e => {
-            if (e.target === this.logo) {
-              onEnd();
-            }
-          }}
-          ref={r => {
-            this.logo = r;
-          }}
+        <Text
+          as="span"
+          sx={({ easings, animations }) => ({
+            display: "inline-block",
+            animation: `${animations.appearLeft} 2s 1s ${easings.inOutQuint} both`,
+          })}
         >
-          <span className={styles.name}>adrien</span>{' '}
-          <span className={styles.subtitle}>developer</span>{' '}
-          <span className={styles.surname}>denat</span>
-        </span>
-      </div>
-    );
-  }
-}
+          Adrien
+        </Text>{" "}
+        <Text
+          as="span"
+          sx={({ easings, animations }) => ({
+            display: "inline-block",
+            animation: `${animations.appearRight} 2s 1.1s ${easings.inOutQuint} both`,
+          })}
+        >
+          Denat
+        </Text>
+        <Text
+          sx={({ animations }) => ({
+            fontSize: ["1.5rem", "4.2rem"],
+            fontFamily: "body",
+            fontWeight: 500,
+            fontStyle: "italic",
+            color: "red",
+            mt: "-5px",
+            animation: `${animations.fadeIn} 300ms 1.7s both`,
+          })}
+        >
+          developer
+        </Text>
+      </Heading>
+    </Box>
+  );
+};
+
+export default Intro;

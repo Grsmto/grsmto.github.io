@@ -1,48 +1,63 @@
-import React from 'react';
+import React from "react";
+import { Box } from "@theme-ui/components";
 
-import styles from './SocialButtons.module.css';
+import { IconTwitter, IconGithub, IconCodepen, IconLinkedIn } from "./Icons";
 
-import {
-  IconTwitter,
-  IconGithub,
-  IconCodepen,
-  IconLinkedIn
-} from './Icons';
+const iconStyle = {
+  "&:hover": {
+    color: "red",
+  },
+  "& + &": {
+    ml: 2,
+  },
+};
 
-const SocialButtons = () =>
-  <div className={styles.socialButtons}>
-    <a
-      className={styles.socialButton}
+const SocialButtons = () => (
+  <Box
+    sx={{
+      mt: 5,
+      "* + *": {
+        ml: 2,
+      },
+    }}
+  >
+    <Box
+      as="a"
+      sx={iconStyle}
       href="https://github.com/Grsmto/"
       target="_blank"
       rel="noopener noreferrer"
     >
       <IconGithub />
-    </a>
-    <a
-      className={styles.socialButton}
+    </Box>
+    <Box
+      as="a"
+      sx={iconStyle}
       href="https://codepen.io/Grsmto/"
       target="_blank"
       rel="noopener noreferrer"
     >
       <IconCodepen />
-    </a>
-    <a
-      className={styles.socialButton}
+    </Box>
+    <Box
+      as="a"
+      sx={iconStyle}
       href="https://twitter.com/Grsmto"
       target="_blank"
       rel="noopener noreferrer"
     >
       <IconTwitter />
-    </a>
-    <a
-      className={styles.socialButton}
+    </Box>
+    <Box
+      as="a"
+      sx={iconStyle}
       href="https://www.linkedin.com/in/adriendenat/"
       target="_blank"
       rel="noopener noreferrer"
     >
       <IconLinkedIn />
-    </a>
-  </div>;
+    </Box>
+  </Box>
+);
 
 export default SocialButtons;
