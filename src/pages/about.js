@@ -255,14 +255,18 @@ const AboutPage = ({ data }) => {
                   >
                     websites
                   </a>
-                  , products and mobile applications. I recently left my
+                  , products and mobile applications. Two years ago I left my
                   position of lead frontend developer at NEVERBLAND to start
                   working as a freelancer.
                   <br />
                   I now have a dozen of projects in production using React,
                   Redux and also GraphQL, but I'm open to other frameworks too!
-                  I'm always looking for the fastest, cleanest and most
+                  I'm fluent in TypeScript and testing my code (unit, functional
+                  tests). I'm always looking for the fastest, cleanest and most
                   efficient way to build user interfaces.
+                  <br />
+                  I follow high standards and development conventions (semantic
+                  releases, conventional commits, tests, code reviews, ...)
                   <br />
                   Lately I have been focusing on Design Systems and products
                   frontend architecture.
