@@ -1,7 +1,8 @@
 module.exports = {
   siteMetadata: {
-    title: "Adrien Denat",
-    description: "Freelance frontend engineer based in London.",
+    title: "Adrien Denat - Freelance Frontend Engineer - London",
+    description:
+      "Freelance Frontend Developer based in London. JavaScript, React, Redux, GraphQL, TypeScript, ...",
     siteUrl: "https://adriendenat.com",
     banner: "/open-graph.jpg",
     twitter: "adriendenat",
