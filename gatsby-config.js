@@ -26,5 +26,18 @@ module.exports = {
         trackingId: "UA-44112811-3",
       },
     },
+    {
+      resolve: `gatsby-plugin-manifest`,
+      options: {
+        name: `Adrien Denat`,
+        short_name: `A.Denat`,
+        start_url: `/`,
+        background_color: `#000000`,
+        theme_color: `#FF302B`,
+        display: `minimal-ui`,
+        icon: `static/favicon.svg`, // This path is relative to the root of the site.
+      },
+    },
+    `gatsby-plugin-sitemap`,
   ],
 };
