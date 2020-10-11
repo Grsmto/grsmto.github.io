@@ -167,14 +167,12 @@ const AboutPage = ({ data }) => {
             <GridRow>
               <GridRow.Col gridColumn={["1 / -1", "3 / -3", "4 / -4"]}>
                 <Heading as="h2" variant="text.headings.h2" sx={{ mb: [4, 5] }}>
-                  Freelance developer based in London,
-                  <br />
-                  currently working from Brazil. 🇧🇷
+                  Freelance developer based in London.
                 </Heading>
                 <p>
                   I love building websites and products with a meaning.
                   <br />
-                  Beautiful and functional interfaces is my thing.
+                  Functional and beautiful interfaces is my thing.
                   <br />
                   I specialise in frontend software engineering but I'm ready to
                   work on a wide variety of project.
@@ -270,8 +268,8 @@ const AboutPage = ({ data }) => {
                   <br />
                   Lately I have been focusing on Design Systems and products
                   frontend architecture.
-                  <br />I love remote work and I would make you change your mind
-                  about how efficient it can be!
+                  <br />I love remote work and I have been working from Brazil
+                  for 3 years, so I have a strong experience in remote work!
                 </p>
               </GridRow.Col>
             </GridRow>
